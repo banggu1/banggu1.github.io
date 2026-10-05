@@ -137,8 +137,11 @@ function renderAbout() {
       <span class="m">${esc(a.place)} - <i style="display:inline">${esc(a.year)}</i></span>`;
     return a.link ? `<a class="entry" href="${projectUrl(a.link)}" style="display:block">${inner}</a>` : `<div class="entry">${inner}</div>`;
   }).join('');
+  // 전시마다 출품작 페이지로 가는 링크 (works: PROJECTS의 키 목록)
+  const works = e => (e.works || []).filter(id => PROJECTS[id]).map(id =>
+    `<a class="work" href="${projectUrl(id)}">${esc(PROJECTS[id].title)}</a>`).join(' · ');
   const exhibitions = BIO.exhibitions.map(e => `
-    <div class="entry"><span class="t">${esc(e.title)}</span><span class="m">${esc(e.place)}</span><span class="d">${esc(e.date)}</span></div>`).join('');
+    <div class="entry"><span class="t">${esc(e.title)}</span><span class="m">${esc(e.place)}</span><span class="d">${esc(e.date)}</span>${e.works ? `<span class="works">출품작 : ${works(e)}</span>` : ''}</div>`).join('');
   const experience = BIO.experience.map(e => `
     <a class="entry" href="${projectUrl(e.link)}" style="display:block"><span class="t">${esc(e.title)}</span><span class="d">${esc(e.date)}</span></a>`).join('');
 
@@ -292,26 +295,18 @@ function renderProject() {
 
   const media = p.video
     ? `<video class="hero" src="${p.video}" poster="${img(p.poster)}" controls playsinline preload="metadata"></video>`
-    : p.heroes ? `
-      <div class="hero-wrap reveal">
-        <div class="hero-stage">
-          <div class="hero-slider" style="aspect-ratio:${p.heroRatio || '1 / 1.414'}${p.heroBg ? `;background:${p.heroBg}` : ''}">
-            ${p.heroes.map((h, i) => `<img src="${img(h)}" alt="${esc(p.title)} ${i + 1}" style="transform:translateX(${i ? 100 : 0}%)">`).join('')}
-          </div>
-          <button class="hs-btn prev" aria-label="이전 이미지">‹</button>
-          <button class="hs-btn next" aria-label="다음 이미지">›</button>
-        </div>
-        <p class="hs-count">1 / ${p.heroes.length}</p>
-      </div>`
+    : p.heroes ? sliderHTML(p.heroes, p.heroRatio, p.heroBg, p.title)
     : p.hero ? `<img class="hero reveal" src="${img(p.hero, 1300)}" alt="${esc(p.title)}">` : '';
 
-  const body = p.body.map(([type, val, w]) => {
+  const body = p.body.map(([type, val, w, bg]) => {
     switch (type) {
       case 'h': return `<h3 class="h reveal">${esc(val)}</h3>`;
       case 'sub': return `<p class="sub">${esc(val)}</p>`;
       case 'p': return `<p>${esc(val)}</p>`;
       case 'img': return `<img class="img reveal" src="${img(val, 1300)}" alt="" loading="lazy" ${w ? `style="width:${w}px"` : ''}>`;
       // ['imgs', [...], 높이] — 높이를 주면 그 높이로(기본 140px)
+      // ['slides', [이미지들], '가로 / 세로', 배경색] — 한 장씩 넘겨 보는 슬라이드
+      case 'slides': return sliderHTML(val, w, bg);
       case 'imgs': return `<div class="imgs reveal">${val.map(s => `<img src="${img(s, 500)}" alt="" loading="lazy"${w ? ` style="height:${w}px"` : ''}>`).join('')}</div>`;
       case 'cap': return `<p class="cap">${esc(val)}</p>`;
       default: return '';
@@ -346,14 +341,33 @@ function renderProject() {
     </article>
     <nav class="pager">${pager}</nav>`);
 
-  if (p.heroes) bindHeroSlider();
+  bindSliders();
 }
 
-// 작품 맨 위 이미지 여러 장: 화살표·스와이프로 옆으로 미끄러지듯 넘김
-function bindHeroSlider() {
-  const box = $('.hero-slider');
+// 이미지 여러 장을 한 장씩 넘겨 보는 슬라이드 (작품 맨 위, 본문 ['slides', ...] 블록 공용)
+function sliderHTML(list, ratio, bg, alt) {
+  if (list.length === 1) return `<img class="img reveal" src="${img(list[0])}" alt="${esc(alt || '')}">`;
+  return `
+      <div class="hero-wrap reveal">
+        <div class="hero-stage">
+          <div class="hero-slider" style="aspect-ratio:${ratio || '1 / 1.414'}${bg ? `;background:${bg}` : ''}">
+            ${list.map((h, i) => `<img src="${img(h)}" alt="${esc(alt || '')} ${i + 1}" style="transform:translateX(${i ? 100 : 0}%)">`).join('')}
+          </div>
+          <button class="hs-btn prev" aria-label="이전 이미지">‹</button>
+          <button class="hs-btn next" aria-label="다음 이미지">›</button>
+        </div>
+        <p class="hs-count">1 / ${list.length}</p>
+      </div>`;
+}
+
+// 화살표·스와이프로 옆으로 미끄러지듯 넘김. 슬라이드마다 따로 동작
+function bindSliders() {
+  document.querySelectorAll('.hero-wrap').forEach(bindSlider);
+}
+function bindSlider(wrap) {
+  const box = $('.hero-slider', wrap);
   const imgs = [...box.querySelectorAll('img')];
-  const count = $('.hs-count');
+  const count = $('.hs-count', wrap);
   let cur = 0;
   const go = dir => {
     const out = imgs[cur];
@@ -368,8 +382,8 @@ function bindHeroSlider() {
     out.style.transform = `translateX(${dir > 0 ? -100 : 100}%)`;
     count.textContent = `${cur + 1} / ${imgs.length}`;
   };
-  $('.hs-btn.prev').addEventListener('click', () => go(-1));
-  $('.hs-btn.next').addEventListener('click', () => go(1));
+  $('.hs-btn.prev', wrap).addEventListener('click', () => go(-1));
+  $('.hs-btn.next', wrap).addEventListener('click', () => go(1));
   let x0 = null;
   box.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
   box.addEventListener('touchend', e => {

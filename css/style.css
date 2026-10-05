@@ -332,3 +332,11 @@ a.entry:hover .t { color: var(--black); }
 @media (max-width: 900px) {
   .cards2.wide { grid-template-columns: min(440px, 100%); gap: 50px; }
 }
+
+/* 본문 중간에 들어가는 슬라이드 (맨 위 슬라이드 말고) */
+.project > .hero-wrap:not(:first-child) { margin: 48px 0 14px; }
+
+/* BIO 전시 목록의 출품작 링크 줄 */
+.entry .works { display: block; font-size: 13px; color: #555; margin-top: 2px; }
+.entry .works a.work { color: var(--black); text-decoration: underline; text-underline-offset: 3px; }
+.entry .works a.work:hover { color: var(--red); }
