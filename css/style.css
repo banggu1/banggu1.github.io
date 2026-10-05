@@ -325,3 +325,10 @@ a.entry:hover .t { color: var(--black); }
   .lightbox { padding: 56px 12px 90px; }
   .lb-btn { top: auto; bottom: 14px; transform: none; height: 56px; }
 }
+
+/* ---------- INTERACTIVE: 가로 화면(게임·웹) 카드 ---------- */
+.cards2.wide { grid-template-columns: repeat(2, minmax(0, 440px)); gap: 70px 60px; }
+.cards2.wide .thumb { aspect-ratio: 16 / 10; }
+@media (max-width: 900px) {
+  .cards2.wide { grid-template-columns: min(440px, 100%); gap: 50px; }
+}

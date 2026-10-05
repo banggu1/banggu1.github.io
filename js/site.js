@@ -217,8 +217,8 @@ function renderCategory() {
         <figure><img alt=""><figcaption></figcaption></figure>
         <button class="lb-btn next" type="button" aria-label="다음 이미지">›</button>
       </div>`;
-  } else if (cat.layout === 'cards') {
-    list = `<div class="cards2">${cat.items.map(it => `
+  } else if (cat.layout === 'cards' || cat.layout === 'wide') {
+    list = `<div class="cards2${cat.layout === 'wide' ? ' wide' : ''}">${cat.items.map(it => `
       <a class="card2 reveal" href="${projectUrl(it.id)}">
         <h3>${esc(it.title)}</h3><span class="d">${esc(it.date)}</span>
         <div class="thumb"><img src="${img(it.thumb, 620)}" alt="" loading="lazy"></div>
@@ -295,7 +295,7 @@ function renderProject() {
     : p.heroes ? `
       <div class="hero-wrap reveal">
         <div class="hero-stage">
-          <div class="hero-slider">
+          <div class="hero-slider" style="aspect-ratio:${p.heroRatio || '1 / 1.414'}">
             ${p.heroes.map((h, i) => `<img src="${img(h)}" alt="${esc(p.title)} ${i + 1}" style="transform:translateX(${i ? 100 : 0}%)">`).join('')}
           </div>
           <button class="hs-btn prev" aria-label="이전 이미지">‹</button>
