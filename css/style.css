@@ -133,7 +133,7 @@ a.entry:hover .t { color: var(--black); }
 
 /* ---------- 푸터(Contact) ---------- */
 .site-footer { background: var(--black); color: var(--white); padding: 90px 0 30px; }
-.site-footer h2 { color: var(--red); font-family: var(--sans); font-weight: 700; font-size: 22px; margin-bottom: 50px; }
+.site-footer h2 { color: var(--red); font-family: var(--sans); font-weight: 700; font-size: 40px; line-height: 1.1; margin-bottom: 50px; }
 .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; }
 .contact-form label { font-family: var(--sans); font-size: 13px; font-weight: 700; display: block; margin-bottom: 8px; }
 .contact-form .full { grid-column: 1 / -1; }
