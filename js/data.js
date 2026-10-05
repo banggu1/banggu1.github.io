@@ -373,7 +373,7 @@ const PROJECTS = {
       ['p', '• [ Cold to Warm ] | 투명한 유리 질감에서 열상 컬러로 이어지는 단계적 변화로, 기계적 완벽함 너머의 인간적인 온기가 디지털 시스템을 통해 퍼져나가는 연결의 미학을 표현했다.'],
       ['p', "• [ Digital Mandala ] | 어두운 배경 위에 컴퓨터를 감싸듯 펼쳐진 손들의 대칭 구도로, 서로 다른 문화가 조화롭게 어우러지는 '디지털 만다라'를 형상화했다."],
       ['sub', '※ [ Tools ]'],
-      ['p', '• Adobe Photoshop (Image Compositing, Texture & Color Editing)\n• Adobe Illustrator (Typography & Layout)'],
+      ['p', '• Gemini (Image Generation)\n• Adobe Illustrator (Typography & Layout)'],
     ],
     links: [['Visit Contest', 'https://26-1-dah-exhibition-poster-competit.vercel.app/content']],
   },
