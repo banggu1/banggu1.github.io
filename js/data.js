@@ -39,6 +39,7 @@ const BIO = {
     { title: '디지털인문예술 전시회 포스터 공모전', prize: '최우수상', place: '춘천, 한림대학교', year: '2025', link: 'dah' },
     { title: '일송기념도서관 장서표 디자인 공모전', prize: '최우수상', place: '춘천, 한림대학교', year: '2024', link: 'geumsaek' },
     { title: '2026 디지털인문예술전공 신규 캐릭터 공모전', prize: '우수상', place: '춘천, 한림대학교', year: '2026', link: 'dfoo' },
+    { title: '제 18회 디지털인문예술전공 프로젝트 전시회', prize: '우수상', place: '춘천, 한림대학교', year: '2026', link: 'psyche' },
     { title: '제 15회 디지털인문예술 기말프로젝트 전시회', prize: '우수상', place: '춘천, 한림대학교', year: '2024', link: 'i-like' },
     { title: '제 15회 디지털인문예술 기말프로젝트 전시회', prize: '우수상', place: '춘천, 한림대학교', year: '2024', link: 'tagger' },
     { title: '제 13회 디지털인문예술 기말프로젝트 전시회', prize: '장려상', place: '춘천, 한림대학교', year: '2023', link: 'olympos' },
@@ -48,6 +49,7 @@ const BIO = {
     { title: '제 14회 디지털인문예술 기말프로젝트 전시회', place: '일송기념도서관 4층 C.SQUARE, 춘천', date: '2024. 06. 03. ~ 06. 05.' },
     { title: '제 15회 디지털인문예술 기말프로젝트 전시회', place: '한림대학교 Campus Life Center 1,2층, 춘천', date: '2024. 12. 03. ~ 12. 06.' },
     { title: '제 16회 디지털인문예술 기말프로젝트 전시회', place: '한림대학교 Campus Life Center 1,2층, 춘천', date: '2025. 06. 03. ~ 06. 05.' },
+    { title: '제 18회 디지털인문예술전공 프로젝트 전시회', place: '한림대학교 Campus Life Center 1층, 춘천', date: '2026. 06. 02. ~ 06. 04.' },
   ],
   experience: [
     { title: '한림대학교 박물관 서포터즈 6기', date: '2024. 09. 06. ~ 12. 11.', link: 'supporters' },
@@ -314,7 +316,7 @@ const PROJECTS = {
   psyche: {
     cat: 'awards', title: 'PROJECT: PSYCHE-TYPE',
     hero: 'a7652d_3d9ca7e1a44e42588a160d07e70f0c29~mv2.png',
-    headline: 'PROJECT: PSYCHE-TYPE — König Typeface',
+    headline: "2026-1 제 18회 디지털인문예술전공 프로젝트 전시회 '우수상'",
     body: [
       ['sub', '[ Project ]'],
       ['p', 'Project : < PROJECT: PSYCHE-TYPE — König Schreibschrift & Druckschrift >'],
@@ -343,6 +345,7 @@ const PROJECTS = {
     links: [
       ['Visit Typeface Site (KR)', 'https://ixoxiartison.wixsite.com/koenig-typeface-kr'],
       ['Visit Typeface Site (EN)', 'https://ixoxiartison.wixsite.com/koenig-typeface'],
+      ['Visit Exhibition', 'https://26-1-dah-exhibition.vercel.app/award'],
     ],
   },
 
