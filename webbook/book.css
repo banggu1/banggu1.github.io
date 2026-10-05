@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+}
+
+
+@font-face {
+    font-family: 'GowunBatang';
+    src: url('font/GowunBatang-Regular.ttf');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'GowunBatang';
+    src: url('font/GowunBatang-Bold.ttf'); 
+    font-weight: bold;
+}
+
+.font {font-family: GowunBatang; }
+
+#menu {
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 90px;
+    margin-bottom: 0;
+    margin-left: 300px;
+}
+
+#music {
+    margin-top: 80px;
+    margin-left: 200px;
+    margin-bottom: 1px;
+    font-weight: bold;
+    font-size: 17px;
+    color: #328c4d;
+    float: left;
+}
+
+#book {
+    text-align: center;
+    
+}
+
+#book_cover {
+    margin-top: 10px;
+}
+
+#book_main{
+    margin-top: 25px;
+
+}
+
+a {
+    text-decoration: none;
+    color: hotpink;
+}
+
+a:hover {
+    color: mediumslateblue;
+}
+
+#footer {
+    margin-left: 990px;
+    font-size: 13px;
+    color: #328c4d;
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title> 소감 남기기 </title>
+        <link href="comment.css" rel="stylesheet" type="text/css">
+
+        <style>
+            body {
+                background-image: url(img/blue_flower_back.png);
+            }
+        </style>
+
+    
+    </head>
+    <body>
+        <div class="font">
+            <a name="top"></a>
+            <div id="wrap">
+
+                <div id="menu">
+                    <ul>
+                        <li><a href="home.html"><img src="img/green_flower_menu_white.png" width="40px" alt="초록 꽃"> 홈으로 가기 </a></li>
+                        <li><a href="book.html"><img src="img/red_flower_menu.png" width="40px" alt="빨간 꽃"> 동화책 보러가기 </a></li>
+                        <li><a href="make.html"><img src="img/yellow_flower_menu.png" width="40px" alt="노란 꽃"> 제작 과정 보러가기 </a></li>
+                    </ul>
+                </div>
+
+                <div id="santa">
+                    <a target="_blank" href="christmas.html"><img src="img/santa_head.png" width="40px" alt="산타모자"></a>
+                </div>
+
+                <div id="header">
+
+                    <div id="text">
+                        동화책을 읽고 난 후 느낀점을 써주세요.<br>
+                        이 웹사이트에 대한 장단점, 흥미로운 점 등을 마음껏 적어주세요.<br>
+                        문제가 있을 시 20236632@hallym.ac.kr로 메일을 보내주세요.<br>
+                    </div>
+                    <div id="text_s">
+                        *당신의 모든 글과 정보는 유출되지 않습니다.*<br>
+                    </div>
+                    
+                </div>
+
+                <div id="flower">
+                    <img src="img/blue_flower_menu.png" width="72px" alt="파란 꽃">
+                </div>
+
+                <div id="form">
+
+                    <form>
+
+                            <fieldset>
+                
+                                <legend style="background-color: #5487ff; color: rgb(255, 255, 255);">사용자 정보</legend>
+                                
+                                <h3>1. 성별을 선택하세요.</h3>
+                                    <input type="radio" name="gender" value="m">남자
+                                    <input type="radio" name="gender" value="w">여자
+                                    <input type="radio" name="gender" value="o">그외
+        
+                                
+                                <h3>2. 연령대를 선택하세요.</h3>
+                                    <input type="radio" name="age" value="z">0~9세
+                                    <input type="radio" name="age" value="t">10~19세
+                                    <input type="radio" name="age" value="tw">20~29세
+                                    <input type="radio" name="age" value="th">30~39세<br>
+                                    <input type="radio" name="age" value="fo">40~49세
+                                    <input type="radio" name="age" value="fi">50~59세
+                                    <input type="radio" name="age" value="si">60~69세
+                                    <input type="radio" name="age" value="se">70~79세<br>
+                                    <input type="radio" name="age" value="ei">80~89세
+                                    <input type="radio" name="age" value="ni">90~99세
+                                    <input type="radio" name="age" value="te">100세~
+                
+                            </fieldset>
+                       
+            
+                        <p></p>
+            
+                        <fieldset>
+                            
+                            <legend style="background-color: #5487ff; color: rgb(255, 255, 255);">소감 남기기</legend>
+                            
+            
+                            <h3>1. 최근 독서를 한지 얼마나 되었나요? </h3>
+                                <input type="radio" name="read" value="z">오늘
+                                <input type="radio" name="read" value="t">하루 전
+                                <input type="radio" name="read" value="tw">일주일 전
+                                <input type="radio" name="read" value="th">한달 전
+                                <input type="radio" name="read" value="fo">1년 전
+
+            
+                            <h3>2. 주로 어떤 미디어를 사용해 독서를 읽나요? </h3>
+                                <select id="use" size="4">
+                                    <option value="p">종이 책</option>
+                                    <option value="sm">스마트폰</option>
+                                    <option value="tb">태블릿</option>
+                                    <option value="com">컴퓨터</option>
+                                    <option value="t">그외</option>
+                                </select>
+            
+                            <h3>3. 독서할 때 최대 몇 분 집중하나요? </h3>
+                                <input type="number" min="0" max="360" step="1">
+            
+                            
+                            <h3>4. '연우의 대모험'을 읽고 느낀점을 작성해주세요.</h3>
+                                <textarea cols="60" rows="7" id="comments"></textarea>
+
+                            <h3>5. 이 웹 사이트에 대한 평가를 해주세요.</h3>
+                                <textarea cols="60" rows="7" id="comments"></textarea>
+            
+                            <h3>6. 추천하고 싶은 책을 써주세요.</h3>
+                                <textarea cols="60" rows="7" id="comments"></textarea>
+            
+                        </fieldset>
+            
+                        <br>
+                        
+                        <input type="submit" value="제출합니다">
+                        <input type="reset" value="취소하겠습니다">
+                    
+            
+                    </form>
+
+                   
+                </div>
+
+                <a href="#top"><img src="img/blue_top.png" width="150px" alt="맨 위로"></a>
+
+            </div>
+
+
+            <div id="footer">
+                * 제작자: 한림대학교 / 미래융합스쿨 / 20236632 / 이지현 / 20236632@hallym.ac.kr / :) *
+            </div>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'GowunBatang';
+    src: url('font/GowunBatang-Regular.ttf');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'GowunBatang';
+    src: url('font/GowunBatang-Bold.ttf'); 
+    font-weight: bold;
+}
+
+.font {font-family: GowunBatang;}
+
+#wrap {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#menu {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    padding: 27px 55px;
+    display: inline-block;
+}
+
+#santa {
+    position: absolute;
+    top: 18%;
+    left: 72.5%;
+    transform: translate(-50%, -50%);
+}
+
+#header {
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+    width: 700px;
+    height: 170px;
+    padding-top: 1px;
+    background-color: #f7f0d6;
+    border: 3px dashed #5487ff;
+}
+
+#text {
+    margin-top: 20px;
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #328c4d;
+}
+
+#text_s {
+    padding: 3px;
+    font-size: 15px;
+    color: rgb(108, 108, 108);
+}
+
+#flower {
+    position: absolute;
+    top: 49.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#form {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 30px;
+    width: 700px;
+    padding: 15px;
+    text-align: left;
+    border: 3px dashed #5487ff;
+    background-color: #f7f0d6ab;
+}
+
+
+a {
+    text-decoration: none;
+    color: #328c4d;
+}
+
+a:hover {
+    color: #5487ff
+}
+
+#footer {
+    margin-left: 1000px;
+    font-size: 13px;
+    color: #328c4d;
+}

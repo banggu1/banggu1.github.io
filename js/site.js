@@ -295,7 +295,7 @@ function renderProject() {
     : p.heroes ? `
       <div class="hero-wrap reveal">
         <div class="hero-stage">
-          <div class="hero-slider" style="aspect-ratio:${p.heroRatio || '1 / 1.414'}">
+          <div class="hero-slider" style="aspect-ratio:${p.heroRatio || '1 / 1.414'}${p.heroBg ? `;background:${p.heroBg}` : ''}">
             ${p.heroes.map((h, i) => `<img src="${img(h)}" alt="${esc(p.title)} ${i + 1}" style="transform:translateX(${i ? 100 : 0}%)">`).join('')}
           </div>
           <button class="hs-btn prev" aria-label="이전 이미지">‹</button>

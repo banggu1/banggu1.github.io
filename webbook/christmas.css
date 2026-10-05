@@ -1,0 +1,146 @@
+body {
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'Gaegu';
+    src: url('font/Gaegu-Regular.ttf');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Gaegu';
+    src: url('font/Gaegu-Bold.ttf'); 
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Gaegu';
+    src: url('font/Gaegu-Light.ttf'); 
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: 'Pacifico';
+    src: url('font/Pacifico-Regular.ttf');
+    font-weight: normal;
+}
+
+.font {font-family: Gaegu; }
+
+#wrap {
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+#header {
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    width: 550px;
+    height: 100px;
+    background-color: #f7f0d6;
+    border: 5px dashed #328c4d;
+}
+
+#snow {
+    position: absolute;
+    top: 101%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+
+}
+
+#title {
+    font-family: 'Pacifico';
+    font-size: 50px;
+    font-weight: bold;
+    color: #328c4d;
+    margin-top: 20px;
+}
+
+#contents_text {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000;
+    position: absolute;
+    top: 42%;
+    left: 53.5%;
+    transform: translate(-50%, -50%);
+}
+
+#contents_bonus {
+    position: absolute;
+    top: 50%;
+    left: 53.5%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+#contents_img {
+    padding-right: 60px;
+}
+
+#menu {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 25px;
+    width: 900px;
+    background-color: #f7f0d6;
+    border: 5px dashed #328c4d;
+    
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block; 
+} 
+
+#add {
+    width: 900px;
+    border-top: 5px dotted #328c4d;
+}
+
+#text {
+    margin-top: 26px;
+    color: #000000;
+}
+
+#img {
+    position: absolute;
+    top: 217%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+}
+
+#add_img {
+    margin-top: 30px;
+    font-size: 11px;
+}
+
+a {
+    text-decoration: none;
+    color: #328c4d;
+}
+
+a:hover {
+    color: rgb(230, 27, 27);
+}
+
+#footer {
+    margin-left: 928px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #f7f0d6;
+}
+/* [포트폴리오 공개본 수정] 대사를 그림 기준으로 배치해서, 화면 크기가 달라도 말풍선 안에 들어가게 함 */
+#contents_img a { position: relative; display: inline-block; }
+#contents_text { top: 26.6%; left: 66.1%; white-space: nowrap; font-size: 25px; }
