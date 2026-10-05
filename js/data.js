@@ -59,6 +59,7 @@ const BIO = {
 };
 
 // 포트폴리오 카테고리. items의 id가 PROJECTS의 키. id가 null이면 상세 페이지 없음.
+// 새 작품은 각 칸 items 목록의 맨 아래에 추가 (사용자 요청)
 const CATEGORIES = {
   awards: {
     label: 'AWARDS', back: 'Awards', layout: 'grid',
@@ -79,13 +80,13 @@ const CATEGORIES = {
     tile: 'a7652d_746eec0279f743ffbf679f8fff9959a6~mv2.png',
     items: [
       { id: 'chok', title: '촉 (觸)', thumb: 'chok-poster.png' },
-      { id: 'chardesign', title: '캐릭터 디자인 — 리모델링 · 외주 · 창작', thumb: 'cd-thumb.png' },
       { id: 'gongmyeong', title: '공명(共鳴): 디지털의 파동', thumb: 'a7652d_746eec0279f743ffbf679f8fff9959a6~mv2.png' },
       { id: 'sinho', title: '신호(信號): 연결의 언어', thumb: 'a7652d_be30121efa06445391aa782cd9554cdb~mv2.png' },
       { id: 'x-gon', title: "X Gon' Give It To Ya", thumb: 'a7652d_09b49ab95d6e489fad228f41809cad1b~mv2.png' },
       { id: 'leon-pro', title: 'LÉON: The Professional', thumb: 'a7652d_954949d06c1447cf9bda031e806c7ac1~mv2.jpg' },
       { id: 'silhouette', title: '지성의 실루엣', thumb: 'a7652d_e23a4a9d4afd42e28151fba5d0f0e4e8~mv2.png' },
       { id: 'leon', title: 'LÉON', thumb: 'a7652d_7dbce06004cb466e80d2f6036ac3521b~mv2.png' },
+      { id: 'chardesign', title: '캐릭터 디자인 — 리모델링 · 외주 · 창작', thumb: 'cd-thumb.png' },
       { id: 'dripbag', title: '옥토끼와 함께하는 김유정 문학커피', thumb: 'drip-thumb.png' },
     ],
   },
@@ -94,8 +95,8 @@ const CATEGORIES = {
     label: 'INTERACTIVE', back: 'Interactive', layout: 'wide',
     tile: 'game-title.png',
     items: [
-      { id: 'pnr', title: 'POINT OF NO RETURN', date: '2025-2 · 3D게임디자인 기말 프로젝트', thumb: 'game-title.png' },
-      { id: 'webbook', title: '작은 동화책 — 연우의 대모험', date: '2023-2 · 창의코딩 기말 프로젝트', thumb: 'webbook-home.png' },
+      { id: 'pnr', title: 'POINT OF NO RETURN', date: '2025-2 개인 프로젝트 · 3D 게임', thumb: 'game-title.png' },
+      { id: 'webbook', title: '작은 동화책 — 연우의 대모험', date: '2023-2 개인 프로젝트 · 웹 동화책', thumb: 'webbook-home.png' },
     ],
   },
   experience: {
@@ -113,7 +114,7 @@ const CATEGORIES = {
     items: [
       {
         title: '양치기 소년 — AI 동화책',
-        meta: '2026-1 · AI디지털그래픽 기말 과제',
+        meta: '2026-1 개인 프로젝트 · AI 동화책',
         note: "고전 우화 '양치기 소년'을 어른들을 위한 인생 우화로 재해석한 동화책 디자인. 가상의 출판사 '마녀책방(MANYEO BOOKSHOP)'의 로고·삽화·목업 배경을 Gemini로 만들고, Photoshop으로 표지·내지·목업을 편집했다.",
         images: ['archive-shepherd-cover.png', 'archive-shepherd-page1.png', 'archive-shepherd-page2.png', 'archive-shepherd-logo.png'],
       },
@@ -403,7 +404,7 @@ const PROJECTS = {
     heroes: ['game-title.png', 'game-stage2.png', 'game-dead.png', 'game-stage3.png', 'game-stage4.png', 'game-ending.png'],
     heroRatio: '16 / 10',
     heroBg: '#000',
-    headline: '2025-2 3D게임디자인 기말 프로젝트',
+    headline: '2025-2 개인 프로젝트 · 3D 게임',
     body: [
       ['sub', '[ Project ]'],
       ['p', 'Project : < POINT OF NO RETURN >'],
@@ -446,7 +447,7 @@ const PROJECTS = {
     cat: 'interactive', title: '작은 동화책 — 연우의 대모험',
     heroes: ['webbook-home.png', 'webbook-book.png', 'webbook-christmas.png', 'webbook-special.png'],
     heroRatio: '16 / 10',
-    headline: '2023-2 창의코딩 기말 프로젝트 : 나만의 웹사이트 만들기',
+    headline: '2023-2 개인 프로젝트 · 웹 동화책',
     body: [
       ['sub', '[ Project ]'],
       ['p', 'Project : < 작은 동화책 : 연우의 대모험 >'],
@@ -477,11 +478,11 @@ const PROJECTS = {
     cat: 'design', title: '캐릭터 디자인 — 리모델링 · 외주 · 창작',
     heroes: ['cd-luna.png', 'cd-noa.png', 'cd-yuzume-cover.png', 'cd-yuzume-sheet.png', 'cd-yuzume-profile.png'],
     heroRatio: '16 / 10',
-    headline: '2025-1 캐릭터디자인기획 수업 과제',
+    headline: '2025-1 개인 프로젝트 · 캐릭터 디자인',
     body: [
       ['sub', '[ Project ]'],
       ['p', 'Project : < 캐릭터 디자인 : 리모델링 · 외주 · 창작 >'],
-      ['p', '캐릭터디자인기획 수업에서 진행한 세 가지 캐릭터 디자인 과제이다. 기존 캐릭터를 나만의 화풍으로 다시 그리는 리모델링에서 시작해, 기관의 요청에 맞춘 외주 캐릭터, 그리고 세계관까지 직접 만든 창작 캐릭터로 단계를 넓혀 갔다. 각 캐릭터마다 정면·측면·후면 턴어라운드, 표정, 색상값(RGB)을 정리한 캐릭터 시트를 완성했다.'],
+      ['p', '단계를 달리해 진행한 세 가지 캐릭터 디자인 작업이다. 기존 캐릭터를 나만의 화풍으로 다시 그리는 리모델링에서 시작해, 기관의 요청에 맞춘 외주 캐릭터, 그리고 세계관까지 직접 만든 창작 캐릭터로 단계를 넓혀 갔다. 각 캐릭터마다 정면·측면·후면 턴어라운드, 표정, 색상값(RGB)을 정리한 캐릭터 시트를 완성했다.'],
       ['sub', '[ Role ]'],
       ['p', 'Solo Project — Character Design & Illustration'],
       ['h', '01 / Remodeling : 루나 라우드'],
@@ -507,7 +508,7 @@ const PROJECTS = {
     cat: 'design', title: '옥토끼와 함께하는 김유정 문학커피',
     heroes: ['drip-1.png', 'drip-2.png', 'drip-3.png', 'drip-4.png', 'drip-5.png'],
     heroRatio: '1735 / 1224',
-    headline: '2024-2 로컬크리에이터 : 춘천커피도시스토리텔링콘텐츠 중간 프로젝트',
+    headline: '2024-2 팀 프로젝트 · 패키지 디자인',
     body: [
       ['sub', '[ Team Project ]'],
       ['p', 'Project : < 옥토끼와 함께하는 김유정 문학커피 >\nTeam : 4조'],
@@ -525,7 +526,7 @@ const PROJECTS = {
       ['sub', '[ Target ]'],
       ['p', '경험을 중시하고 축제·예쁜 카페를 찾아 여행을 다니는 20~30대. 추억과 선물을 위한 소비가 많은 여행객의 취향을 귀여운 토끼 캐릭터로 겨냥했다.'],
       ['sub', '※ [ Tools ]'],
-      ['p', '• ibisPaint (Mascot Illustration)\n• PowerPoint (Presentation)'],
+      ['p', '• ibisPaint (Mascot Illustration)\n• Canva (Presentation)'],
     ],
     links: [],
   },
