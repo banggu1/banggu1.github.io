@@ -69,7 +69,7 @@ img, video { display: block; max-width: 100%; }
 }
 .intro-name .sub {
   font-family: 'Anton', Impact, sans-serif; font-size: clamp(16px, 2.3vw, 29px);
-  margin: -1.1em 0 0 auto; width: fit-content; pointer-events: auto; display: block;
+  margin: calc(-1.1em + 2px) 0 0 auto; width: fit-content; pointer-events: auto; display: block;
   /* 좁은 화면에서 검은 포스터 위에 겹쳐도 보이도록 흰 테두리 */
   text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 4px #fff;
 }
@@ -81,7 +81,8 @@ img, video { display: block; max-width: 100%; }
 .go:hover { color: var(--red); transform: translateX(6px); }
 
 /* ---------- BIO ---------- */
-.bio-hero { display: grid; grid-template-columns: 1fr 330px; gap: 40px; align-items: start; padding: 140px 0 0; }
+/* 포스터 오른쪽 끝 = 빨간 제목 오른쪽 끝 (둘 다 오른쪽에서 --bio-inset만큼 안쪽) */
+.bio-hero { --bio-inset: 40px; display: grid; grid-template-columns: 1fr calc(330px + var(--bio-inset)); gap: 40px; align-items: start; padding: 140px 0 0; }
 .tag {
   display: inline-block; background: var(--red); color: var(--white);
   font-family: var(--sans); font-weight: 700; font-size: 22px;
@@ -94,8 +95,9 @@ img, video { display: block; max-width: 100%; }
 .roles .q.close { left: 210px; bottom: -40px; }
 .bio-hero .poster { margin-top: 185px; width: 330px; }
 /* 제목이 포스터 아래쪽에 살짝 겹치도록 위로 끌어올림 */
-.bio-copy { position: relative; z-index: 2; margin-top: -24px; padding: 0 0 170px; margin-left: auto; max-width: 600px; }
-.bio-copy h2 { font-family: var(--impact); font-weight: 400; color: var(--red); font-size: 40px; line-height: 1.3; }
+/* 폭을 빨간 제목 길이에 맞춰서, 설명 글이 제목 오른쪽 끝을 넘지 않게 줄바꿈 */
+.bio-copy { position: relative; z-index: 2; margin: -24px 40px 0 auto; padding: 0 0 170px; width: min-content; }
+.bio-copy h2 { font-family: var(--impact); font-weight: 400; color: var(--red); font-size: 40px; line-height: 1.3; white-space: nowrap; }
 .bio-copy p { font-family: var(--sans); font-weight: 700; font-size: 22px; line-height: 1.5; margin-top: 18px; }
 
 .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding-bottom: 300px; width: min(1040px, 100vw - 32px); margin-left: 50%; transform: translateX(-50%); }
@@ -214,8 +216,8 @@ a.entry:hover .t { color: var(--black); }
   .roles p { font-size: 44px; }
   .roles .q.close { left: 170px; }
   .bio-hero .poster { margin: 60px auto 0; width: min(330px, 100%); }
-  .bio-copy { margin-top: -18px; padding: 0 0 100px; }
-  .bio-copy h2 { font-size: 30px; }
+  .bio-copy { margin: -18px 0 0; padding: 0 0 100px; width: auto; }
+  .bio-copy h2 { font-size: 30px; white-space: normal; }
   .cols { grid-template-columns: 1fr; gap: 40px; padding-bottom: 140px; }
   .big-btn { font-size: 36px; }
   .contact-info { padding: 140px 0 40px; }
