@@ -198,11 +198,12 @@ a.entry:hover .t { color: var(--black); }
 .project .hero { width: 100%; }
 .project video { width: 100%; background: #000; }
 .project .headline { font-family: var(--impact); font-weight: 800; font-synthesis: none; font-size: 24px; text-align: center; margin: 70px 0 60px; line-height: 1.4; }
-.project .h { font-family: var(--impact); font-weight: 800; font-synthesis: none; font-size: 22px; text-align: center; margin: 70px 0 30px; }
+.project .h { font-family: var(--impact); font-weight: 800; font-synthesis: none; font-size: 22px; text-align: center; margin: 90px 0 40px; }
 .project .sub { font-family: var(--sans); font-weight: 700; font-size: 16px; margin-top: 30px; line-height: 1.6; }
 .project p { font-family: var(--sans); font-size: 16px; line-height: 1.75; white-space: pre-line; margin-top: 10px; }
-.project .img { margin: 24px auto; }
-.project .imgs { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: flex-end; margin: 30px 0 10px; }
+/* 이미지 위아래로 숨 쉴 여백 */
+.project .img { margin: 48px auto; }
+.project .imgs { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: flex-end; margin: 48px 0 14px; }
 .project .imgs img { height: 140px; width: auto; }
 .project .cap { text-align: center; font-size: 13px; color: #444; margin-top: 8px; }
 .project .links { margin-top: 40px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
@@ -248,4 +249,24 @@ a.entry:hover .t { color: var(--black); }
   .roles .q.close { left: 140px; bottom: -30px; }
   .grid { grid-template-columns: 1fr; justify-items: center; }
   .card { width: min(259px, 100%); }
+}
+
+/* ---------- 작품 맨 위 이미지 슬라이드 (여러 장일 때) ---------- */
+.hero-slider { position: relative; width: 100%; aspect-ratio: 1 / 1.414; overflow: hidden; }
+.hero-slider img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+  transition: transform .7s cubic-bezier(.65, 0, .35, 1);
+}
+.hs-btn {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 44px; height: 44px; border: 0; border-radius: 50%; cursor: pointer;
+  background: rgba(0, 0, 0, .55); color: var(--white); font-size: 26px; line-height: 1;
+  transition: background .2s;
+}
+.hs-btn:hover, .hs-btn:focus-visible { background: var(--red); }
+.hs-btn.prev { left: 12px; }
+.hs-btn.next { right: 12px; }
+.hs-count { text-align: center; font-family: var(--sans); font-size: 13px; color: #555; margin-top: 12px; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-slider img { transition: none; }
 }

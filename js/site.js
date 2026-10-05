@@ -215,6 +215,15 @@ function renderProject() {
 
   const media = p.video
     ? `<video class="hero" src="${p.video}" poster="${img(p.poster)}" controls playsinline preload="metadata"></video>`
+    : p.heroes ? `
+      <div class="hero-wrap reveal">
+        <div class="hero-slider">
+          ${p.heroes.map((h, i) => `<img src="${img(h)}" alt="${esc(p.title)} ${i + 1}" style="transform:translateX(${i ? 100 : 0}%)">`).join('')}
+          <button class="hs-btn prev" aria-label="이전 이미지">‹</button>
+          <button class="hs-btn next" aria-label="다음 이미지">›</button>
+        </div>
+        <p class="hs-count">1 / ${p.heroes.length}</p>
+      </div>`
     : p.hero ? `<img class="hero reveal" src="${img(p.hero, 1300)}" alt="${esc(p.title)}">` : '';
 
   const body = p.body.map(([type, val, w]) => {
@@ -256,6 +265,39 @@ function renderProject() {
       ${links}
     </article>
     <nav class="pager">${pager}</nav>`);
+
+  if (p.heroes) bindHeroSlider();
+}
+
+// 작품 맨 위 이미지 여러 장: 화살표·스와이프로 옆으로 미끄러지듯 넘김
+function bindHeroSlider() {
+  const box = $('.hero-slider');
+  const imgs = [...box.querySelectorAll('img')];
+  const count = $('.hs-count');
+  let cur = 0;
+  const go = dir => {
+    const out = imgs[cur];
+    cur = (cur + dir + imgs.length) % imgs.length;
+    const inc = imgs[cur];
+    // 들어올 이미지를 진행 방향 반대편에 애니메이션 없이 먼저 세워 둠
+    inc.style.transition = 'none';
+    inc.style.transform = `translateX(${dir > 0 ? 100 : -100}%)`;
+    inc.getBoundingClientRect();
+    inc.style.transition = '';
+    inc.style.transform = 'translateX(0)';
+    out.style.transform = `translateX(${dir > 0 ? -100 : 100}%)`;
+    count.textContent = `${cur + 1} / ${imgs.length}`;
+  };
+  $('.hs-btn.prev', box).addEventListener('click', () => go(-1));
+  $('.hs-btn.next', box).addEventListener('click', () => go(1));
+  let x0 = null;
+  box.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    x0 = null;
+  });
 }
 
 const PAGES = { intro: renderIntro, about: renderAbout, portfolio: renderPortfolio, category: renderCategory, project: renderProject };

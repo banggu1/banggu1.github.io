@@ -150,7 +150,7 @@ const PROJECTS = {
       ['sub', '※ [ Tools ]'],
       ['p', '• Adobe Illustrator (Typography, Layout, Vector Graphics & Character Artwork)'],
     ],
-    links: [['Visit Exhibition', 'https://sites.google.com/glab.hallym.ac.kr/dah2024-2/공모전']],
+    links: [['Visit Contest', 'https://sites.google.com/glab.hallym.ac.kr/dah2024-2/공모전']],
   },
 
   'i-like': {
@@ -203,7 +203,7 @@ const PROJECTS = {
       ['p', '• Adobe Illustrator (Typography, Vector Graphics & Shining Decorative Elements)\n• Adobe Photoshop (Card Layout Design, Frame Compositing & Visual Effects)'],
     ],
     links: [
-      ['>  About the Game', 'https://qr.me-qr.com/mobile/pdf/883b1356-6ec4-4169-adbf-922d85adbfff'],
+      ['View Game Guide', 'https://qr.me-qr.com/mobile/pdf/883b1356-6ec4-4169-adbf-922d85adbfff'],
       ['Visit Exhibition', 'https://sites.google.com/glab.hallym.ac.kr/dah2024-2/project/대중서사양식의-이해/피카부peek-a-boo-you-are-a-tagger'],
     ],
   },
@@ -237,7 +237,7 @@ const PROJECTS = {
       ['p', '• Adobe Illustrator (Main Logo & Typography Design, Vector Graphics)\n• Adobe Photoshop (Mock-up Digital Imaging)'],
     ],
     links: [
-      ['>  About the Link', 'https://underworld004.creatorlink.net/'],
+      ['Visit Game Site', 'https://underworld004.creatorlink.net/'],
       ['Visit Exhibition', 'https://sites.google.com/glab.hallym.ac.kr/dah-2025-1/project/한국문화와-콘텐츠개발/서천일화花'],
     ],
   },
@@ -272,13 +272,14 @@ const PROJECTS = {
     ],
     links: [
       ['Visit Exhibition', 'https://sites.google.com/glab.hallym.ac.kr/dah-2023-2/project/스토리텔링기초/올림포스의-눈과-동심의-여신'],
-      ['>  About the Trivia', 'https://qr.me-qr.com/mobile/pdf/18810067'],
+      ['View Trivia', 'https://qr.me-qr.com/mobile/pdf/18810067'],
     ],
   },
 
   dfoo: {
     cat: 'awards', title: '디푸(D-Foo)',
-    hero: 'a7652d_ba711fe6ca634a598d28b551186a987c~mv2.png',
+    // 여러 장이면 맨 위가 옆으로 넘기는 슬라이드가 됨 (분홍 보드 → 기획서)
+    heroes: ['a7652d_ba711fe6ca634a598d28b551186a987c~mv2.png', 'dfoo-sheet.png'],
     headline: "2026 디지털인문예술전공 신규 캐릭터 공모전 '우수상'",
     body: [
       ['sub', '[ Project ]'],
@@ -330,7 +331,7 @@ const PROJECTS = {
       ['sub', '※ [ Tools ]'],
       ['p', '• Adobe Illustrator (3D Modeling, Typography, Sparkle Effects & Composition)'],
     ],
-    links: [['Visit Exhibition', 'https://sites.google.com/view/l-hussxdah/content']],
+    links: [['Visit Contest', 'https://sites.google.com/view/l-hussxdah/content']],
   },
 
   sinho: {
@@ -433,7 +434,7 @@ const PROJECTS = {
       ['sub', '※ [ Tools ]'],
       ['p', '• Adobe Illustrator (Typographic Reconstruction & Layout Design)\n• Adobe Photoshop (Digital Drawing, Texture Rendering & Lighting Effects)'],
     ],
-    links: [['Visit Exhibition', 'https://sites.google.com/view/l-huss-x/공모작/이지현']],
+    links: [['Visit Contest', 'https://sites.google.com/view/l-huss-x/공모작/이지현']],
   },
 
   leon: {
