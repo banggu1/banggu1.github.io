@@ -87,7 +87,6 @@ const CATEGORIES = {
       { id: 'silhouette', title: '지성의 실루엣', thumb: 'a7652d_e23a4a9d4afd42e28151fba5d0f0e4e8~mv2.png' },
       { id: 'leon', title: 'LÉON', thumb: 'a7652d_7dbce06004cb466e80d2f6036ac3521b~mv2.png' },
       { id: 'chardesign', title: '캐릭터 디자인 — 리모델링 · 외주 · 창작', thumb: 'cd-thumb.png' },
-      { id: 'dripbag', title: '옥토끼와 함께하는 김유정 문학커피', thumb: 'drip-thumb.png' },
     ],
   },
   // 게임·웹처럼 직접 만들어서 움직이는 작업 (대표 이미지가 생기면 tile에 넣기)
@@ -97,6 +96,8 @@ const CATEGORIES = {
     items: [
       { id: 'pnr', title: 'POINT OF NO RETURN', date: '2025-2 개인 프로젝트 · 3D 게임', thumb: 'game-title.png' },
       { id: 'webbook', title: '작은 동화책 — 연우의 대모험', date: '2023-2 개인 프로젝트 · 웹 동화책', thumb: 'webbook-home.png' },
+      { id: 'dripbag', title: '옥토끼와 함께하는 김유정 문학커피', date: '2024-2 팀 프로젝트 · 패키지 디자인', thumb: 'drip-1.png' },
+      { id: 'cheonsang', title: '천상재판', date: '2024-1 팀 프로젝트 · 웹툰 콘텐츠', thumb: 'cs-board.png' },
     ],
   },
   experience: {
@@ -505,7 +506,7 @@ const PROJECTS = {
   },
 
   dripbag: {
-    cat: 'design', title: '옥토끼와 함께하는 김유정 문학커피',
+    cat: 'interactive', title: '옥토끼와 함께하는 김유정 문학커피',
     heroes: ['drip-1.png', 'drip-2.png', 'drip-3.png', 'drip-4.png', 'drip-5.png'],
     heroRatio: '1735 / 1224',
     headline: '2024-2 팀 프로젝트 · 패키지 디자인',
@@ -529,6 +530,39 @@ const PROJECTS = {
       ['p', '• ibisPaint (Mascot Illustration)\n• Canva (Presentation)'],
     ],
     links: [],
+  },
+
+  cheonsang: {
+    cat: 'interactive', title: '천상재판',
+    hero: 'cs-board.png',
+    headline: '2024-1 팀 프로젝트 · 웹툰 콘텐츠',
+    body: [
+      ['sub', '[ Team Project ]'],
+      ['p', 'Project : < 천상재판 >\nTeam : ONE'],
+      ['p', '불교의 10대 지옥을 모티프로, 사후세계의 명부시왕들이 주관하는 다섯 번의 저승심판 과정을 담은 웹툰 콘텐츠이다. 같은 문화원형을 다룬 작품들과 달리, 지옥이 포화 상태가 되어 천상에서 저승재판이 열린다는 설정을 바탕으로 학교폭력이라는 사회 문제를 다룬다.'],
+      ['cap', '※ 위 이미지는 전시회 패널(팀 공동 제작)이며, 패널 속 인물과 세계 그림을 그렸습니다.'],
+      ['sub', '[ Role ]'],
+      ['p', 'Character & World Illustrator'],
+      ['p', '• [ Character Design ] : 주인공과 변호사, 다섯 지옥의 대왕(초강·평등·송제·염라·오도전륜) 캐릭터를 디자인하고 그림.'],
+      ['p', '• [ World Illustration ] : 천상·인간계·지옥이 겹겹이 쌓인 세계관 구조도와, 각 세계의 모습을 그림.'],
+      ['h', '[ Story ]'],
+      ['p', '인간들이 너무 많은 죄를 지어 지옥이 포화 상태가 된 세계. 결국 죽은 자들은 천상에서 지옥의 대왕들에게 재판을 받게 된다.'],
+      ['p', '주인공은 친구를 따라 한 학생을 괴롭히던 학교폭력 가해자다. 괴롭힘이 점점 심해지자 이를 말리며 피해자를 감싸다가, 다른 가해자에게 밀쳐져 머리를 부딪쳐 숨을 거둔다. 가해자였던 그는 마땅히 지옥에 가야 하지만, 마지막 순간 자신을 희생해 피해자를 지켜 낸 선택으로 끝내 천상에 이르게 된다.'],
+      ['h', '[ Characters ]'],
+      ['imgs', ['cs-hero.png', 'cs-lawyer.png', 'cs-student.png']],
+      ['cap', '주인공 · 변호사 · 학생'],
+      ['sub', '[ Five Trials ]'],
+      ['p', '• 화탕지옥 — 초강대왕\n• 철상지옥 — 평등대왕\n• 한빙지옥 — 송제대왕\n• 발설지옥 — 염라대왕\n• 검수지옥 — 오도전륜대왕'],
+      ['imgs', ['cs-king-chogang.png', 'cs-king-pyeongdeung.png', 'cs-king-songje.png', 'cs-king-yeomra.png', 'cs-king-odo.png']],
+      ['cap', '초강대왕 · 평등대왕 · 송제대왕 · 염라대왕 · 오도전륜대왕'],
+      ['h', '[ World ]'],
+      ['img', 'cs-world.png', 360],
+      ['imgs', ['cs-heaven.png', 'cs-human.png', 'cs-hell.png']],
+      ['cap', '천상 · 인간계 · 지옥'],
+      ['sub', '※ [ Tools ]'],
+      ['p', '• ibisPaint (Character & World Illustration)'],
+    ],
+    links: [['Visit Exhibition', 'https://sites.google.com/glab.hallym.ac.kr/dah-2024-1/project/%EB%AC%B8%ED%99%94-%EC%9B%90%ED%98%95%EA%B3%BC-%EA%B3%A0%EC%A0%84%EC%BD%98%ED%85%90%EC%B8%A0/%EC%B2%9C%EC%83%81%EC%9E%AC%ED%8C%90']],
   },
 
   gongmyeong: {
