@@ -101,6 +101,7 @@ const CATEGORIES = {
       { id: 'reader', title: '어쩌다 발견한 독자', date: '2025-2 팀 프로젝트 · 드라마 IP 기획', thumb: 'reader-slide01.png' },
       { id: 'winter', title: '겨울등의 비밀 — 별빛 씨앗 스튜디오', date: '2025-2 팀 프로젝트 · AI 동화책 브랜드', thumb: 'winter-mockup.png' },
       { id: 'chungo', title: '청오, 춘천을 담다 — 차상찬 엽서', date: '2024-1 팀 프로젝트 · 일러스트 엽서', thumb: 'chungo-card4.png' },
+      { id: 'sunground', title: '땅볕 — SUN ON THE GROUND', date: '2025-1 팀 프로젝트 · 브랜드 디자인', thumb: 'sun-comic.png' },
     ],
   },
   experience: {
@@ -668,6 +669,33 @@ const PROJECTS = {
       ['p', '• Adobe Fresco (Postcard & Figure Illustration)'],
     ],
     links: [['View Postcard Set', 'https://me-qr.com/ko/data/image-pack/u1mdqHIJ']],
+  },
+
+  sunground: {
+    cat: 'interactive', title: '땅볕 — SUN ON THE GROUND',
+    heroes: ['sun-logo.png', 'sun-comic.png', 'sun-character.png', 'sun-logo-sketch.png', 'sun-logo-mono.png', 'sun-palette.png'],
+    heroRatio: '4 / 3',
+    headline: '2025-1 팀 프로젝트 · 브랜드 디자인',
+    body: [
+      ['sub', '[ Team Project ]'],
+      ['p', 'Project : < 땅볕 : SUN ON THE GROUND >'],
+      ['p', "'일상의 여백에 스며든 인테리어'를 내건 감성 인테리어 브랜드 기획이다. 빠른 일상과 끝없는 자극 속에서 무뎌진 감각을, 햇볕이 닿은 땅의 온기처럼 다정한 오감 경험으로 되살린다는 콘셉트로 '감각의 회복'과 '일상의 치유'를 핵심 가치로 삼았다. AI를 활용해 브랜드 콘셉트를 다듬고, 로고와 캐릭터, 제품과 웹사이트까지 하나의 브랜드로 설계했다."],
+      ['sub', '[ Role ]'],
+      ['p', 'Brand Visual Designer'],
+      ['p', '• [ Planning ] : 기획 회의에 참여해 브랜드 방향과 아이디어를 함께 냄.'],
+      ['p', '• [ Logo Design ] : 여러 방향의 로고 시안을 그려 보고, 최종 로고(컬러·흑백)와 브랜드 색상을 정리.'],
+      ['p', "• [ Character & Comic ] : 브랜드 캐릭터 '땅콩이'를 디자인하고, 캐릭터의 첫 만남을 그린 네컷만화를 제작."],
+      ['cap', '※ 브랜드 웹사이트와 포스터는 다른 팀원이 제작했습니다.'],
+      ['sub', '[ Design Concept ]'],
+      ['p', '• [ Logo ] | 둥근 해 안에 별처럼 빛나는 햇살과, 땅 위로 부드럽게 흐르는 빛의 물결을 담아 \'땅에 내려앉은 햇볕\'을 그렸다. 흑백 버전도 함께 만들어 어디에나 쓸 수 있게 했다.'],
+      ['p', '• [ Color ] | 흙과 노을을 닮은 테라코타 오렌지(#C95919), 따뜻한 아이보리(#FFF9EE), 햇살 같은 살구빛(#F9D191)으로 브랜드의 온기를 표현했다.'],
+      ['p', "• [ Character ] | 땅에서 자라는 땅콩을 닮은 둥글고 순한 캐릭터 '땅콩이'로, 브랜드가 전하는 편안하고 다정한 쉼을 친근하게 전하도록 했다."],
+      ['img', 'sun-logo-sketch.png'],
+      ['cap', '로고 시안'],
+      ['sub', '※ [ Tools ]'],
+      ['p', '• Adobe Illustrator (Logo Design)\n• ibisPaint (Character & Comic)'],
+    ],
+    links: [['Visit Brand Site', 'https://rootl004y.wixsite.com/sun-on-the-ground']],
   },
 
   gongmyeong: {
