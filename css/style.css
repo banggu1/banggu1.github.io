@@ -59,12 +59,6 @@ img, video { display: block; max-width: 100%; }
   opacity: 0; filter: blur(14px); transition: opacity 1s ease, filter 1.2s ease;
 }
 .slider img.on { opacity: 1; filter: blur(0); }
-.dots { display: flex; gap: 16px; justify-content: center; margin-top: 22px; }
-.dots button {
-  width: 7px; height: 7px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
-  background: #c8c8c8; transition: transform .2s, background .2s;
-}
-.dots button.on { background: var(--black); transform: scale(1.5); }
 .intro-name {
   position: absolute; left: 50%; top: 29%; transform: translateX(-50%);
   text-align: right; pointer-events: none; white-space: nowrap;
@@ -82,7 +76,7 @@ img, video { display: block; max-width: 100%; }
 }
 .intro-name .sub:hover { color: var(--red); }
 .go {
-  margin-top: 90px; font-family: var(--impact); font-size: 44px; letter-spacing: 1px;
+  margin-top: 120px; font-family: var(--impact); font-size: 44px; letter-spacing: 1px;
   transition: color .2s, transform .2s;
 }
 .go:hover { color: var(--red); transform: translateX(6px); }

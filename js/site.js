@@ -81,7 +81,6 @@ function renderIntro() {
   <main class="intro">
     <div class="intro-stage">
       <div class="slider">${INTRO_SLIDES.map((s, i) => `<img src="${img(s, 830)}" alt="" ${i ? 'loading="lazy"' : ''}>`).join('')}</div>
-      <div class="dots">${INTRO_SLIDES.map((_, i) => `<button aria-label="${i + 1}번 포스터"></button>`).join('')}</div>
       <div class="intro-name">
         <h1>LEE JIHYUN</h1>
         <a class="sub" href="portfolio.html">Portfolio</a>
@@ -91,15 +90,12 @@ function renderIntro() {
   </main>`;
 
   const slides = document.querySelectorAll('.slider img');
-  const dots = document.querySelectorAll('.dots button');
   let cur = 0, timer;
   const show = i => {
     cur = (i + slides.length) % slides.length;
     slides.forEach((s, j) => s.classList.toggle('on', j === cur));
-    dots.forEach((d, j) => d.classList.toggle('on', j === cur));
   };
   const play = () => { clearInterval(timer); timer = setInterval(() => show(cur + 1), 3500); };
-  dots.forEach((d, i) => d.addEventListener('click', () => { show(i); play(); }));
   show(0); play();
 }
 
