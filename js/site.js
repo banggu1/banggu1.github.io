@@ -40,22 +40,44 @@ function footer() {
   </footer>`;
 }
 
-// Contact 폼: 서버가 없으므로 메일 앱을 열어 보낸다
+// Contact 폼: Web3Forms로 보내면 SITE.email 메일함으로 바로 도착함
 function bindForm() {
   const form = $('.contact-form');
   if (!form) return;
-  form.addEventListener('submit', e => {
+  const note = $('.form-note', form);
+  const button = $('button[type=submit]', form);
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const f = Object.fromEntries(new FormData(form));
-    const note = $('.form-note', form);
     if (!f.first.trim() || !f.last.trim() || !/^\S+@\S+\.\S+$/.test(f.email)) {
       note.textContent = '이름과 이메일을 정확히 입력해 주세요.';
       return;
     }
-    const subject = `[Portfolio] ${f.first} ${f.last}`;
-    const body = `${f.message}\n\n— ${f.first} ${f.last} (${f.email})`;
-    location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    note.textContent = '메일 앱이 열렸어요. 보내기를 눌러 주세요!';
+    const name = `${f.first.trim()} ${f.last.trim()}`;
+    button.disabled = true;
+    note.textContent = '보내는 중...';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: SITE.formKey,
+          subject: `[Portfolio] ${name}님의 메시지`,
+          from_name: 'iam-jihyun.github.io',
+          name,
+          email: f.email,
+          message: f.message || '(메시지 없음)',
+        }),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message);
+      form.reset();
+      note.textContent = '메시지를 보냈어요. 감사합니다!';
+    } catch {
+      note.innerHTML = `보내지 못했어요. <a href="mailto:${SITE.email}" style="text-decoration:underline">${SITE.email}</a>로 직접 메일을 보내 주세요.`;
+    } finally {
+      button.disabled = false;
+    }
   });
 }
 

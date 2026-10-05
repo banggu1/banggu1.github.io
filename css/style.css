@@ -149,6 +149,7 @@ a.entry:hover .t { color: var(--black); }
   font-family: var(--impact); font-weight: 800; font-synthesis: none; font-size: 30px; transition: background .2s, color .2s;
 }
 .contact-form button:hover { background: var(--white); }
+.contact-form button:disabled { opacity: .5; cursor: wait; }
 .form-note { grid-column: 1 / -1; text-align: center; font-size: 14px; min-height: 1em; }
 .foot-bottom { position: relative; margin-top: 70px; display: flex; justify-content: flex-end; align-items: center; min-height: 30px; }
 .foot-bottom small { font-family: var(--sans); font-size: 13px; }

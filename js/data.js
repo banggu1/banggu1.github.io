@@ -13,6 +13,8 @@ const SITE = {
   avatarHover: 'a3c153_e1410a1d129d42b6b093bf4c361c88ed~mv2.png',
   phone: '010-3351-9976',
   email: 'ixoxi.artison@gmail.com',
+  // Contact 폼 → Web3Forms가 위 이메일로 바로 보내 줌 (공개용 키라 사이트에 넣어도 됨)
+  formKey: 'fb6821e1-c405-4298-aa91-2c71bea36137',
   year: 2026,
 };
 
