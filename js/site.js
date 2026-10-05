@@ -311,7 +311,8 @@ function renderProject() {
       case 'sub': return `<p class="sub">${esc(val)}</p>`;
       case 'p': return `<p>${esc(val)}</p>`;
       case 'img': return `<img class="img reveal" src="${img(val, 1300)}" alt="" loading="lazy" ${w ? `style="width:${w}px"` : ''}>`;
-      case 'imgs': return `<div class="imgs reveal">${val.map(s => `<img src="${img(s, 500)}" alt="" loading="lazy">`).join('')}</div>`;
+      // ['imgs', [...], 높이] — 높이를 주면 그 높이로(기본 140px)
+      case 'imgs': return `<div class="imgs reveal">${val.map(s => `<img src="${img(s, 500)}" alt="" loading="lazy"${w ? ` style="height:${w}px"` : ''}>`).join('')}</div>`;
       case 'cap': return `<p class="cap">${esc(val)}</p>`;
       default: return '';
     }
