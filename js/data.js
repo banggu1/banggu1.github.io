@@ -78,6 +78,7 @@ const CATEGORIES = {
     label: 'DESIGN', back: 'Design', layout: 'grid',
     tile: 'a7652d_746eec0279f743ffbf679f8fff9959a6~mv2.png',
     items: [
+      { id: 'chok', title: '촉 (觸)', thumb: 'chok-poster.png' },
       { id: 'gongmyeong', title: '공명(共鳴): 디지털의 파동', thumb: 'a7652d_746eec0279f743ffbf679f8fff9959a6~mv2.png' },
       { id: 'sinho', title: '신호(信號): 연결의 언어', thumb: 'a7652d_be30121efa06445391aa782cd9554cdb~mv2.png' },
       { id: 'x-gon', title: "X Gon' Give It To Ya", thumb: 'a7652d_09b49ab95d6e489fad228f41809cad1b~mv2.png' },
@@ -347,6 +348,34 @@ const PROJECTS = {
       ['Visit Typeface Site (EN)', 'https://ixoxiartison.wixsite.com/koenig-typeface'],
       ['Visit Exhibition', 'https://26-1-dah-exhibition.vercel.app/award'],
     ],
+  },
+
+  chok: {
+    cat: 'design', title: '촉 (觸)',
+    hero: 'chok-poster.png',
+    headline: '2026-1 디지털인문예술전공 프로젝트 전시회 포스터 공모전 출품작',
+    body: [
+      ['sub', '[ Project ]'],
+      ['p', 'Project : < 촉 (觸) >'],
+      ['p', '“차가운 데이터가 인간의 손끝을 만나 온기를 입는 순간” 형태가 없는 디지털 세계를 불교적 세계관에 비유하여 풀어낸 전시 홍보 포스터이다. 인간과 기계가 만나는 최초의 접촉인 \'촉(觸)\'을 통해, 지역의 작은 이야기들이 전 세계로 뻗어나가 서로 경계를 허물고 어우러지는 거대한 \'디지털 만다라(Mandala)\'를 시각화했다.'],
+      ['sub', '[ Meaning ] : 촉 (觸)'],
+      ['p', '인간과 기계가 만나는 최초의 접촉. 이 손끝의 터치를 통해 차가운 데이터는 비로소 따뜻한 인간다움을 입는다.'],
+      ['p', "• [ 공(空) ] : 형태가 없고 비어 있는 디지털 시스템은 불교의 '공(空)'과 닮아 있다."],
+      ['p', "• [ 인드라망 ] : 전 세계가 인터넷으로 촘촘히 엮인 모습은, 우주의 모든 것이 연결되어 있다는 '인드라망'과 같다."],
+      ['p', "• [ 자타불이(自他不二) ] : 손끝에서 시작된 연결은 나와 타인이 둘이 아니라는 '자타불이'의 정신을 증명한다."],
+      ['sub', '[ Visual Narrative ]'],
+      ['p', '화면 중심의 세 단계 컴퓨터는, 형태가 없는 디지털 데이터가 인간의 손길을 만나 생명력을 얻는 과정을 보여준다.'],
+      ['p', '• [ 01 / 투명한 컴퓨터 ] : 어둠 속에서 떠오른 첫 번째 컴퓨터는 차갑고 투명한 기술 그 자체를 의미한다.'],
+      ['p', "• [ 02 / 물들어 가는 컴퓨터 ] : 아래의 손에서 뿜어져 나오는 온기, 즉 '촉(觸)'에 반응하며 점차 변화하기 시작한다. 인간의 체온을 흡수할수록 색의 스펙트럼이 화려한 만다라처럼 넓어진다."],
+      ['p', "• [ 03 / 손바닥 위의 컴퓨터 ] : 손바닥 위에 안착해 빛을 발하는 마지막 컴퓨터는, 기술이 더 이상 차가운 도구가 아니라 전 세계 사람들과 소통하는 따뜻한 매개체가 되었음을 뜻한다."],
+      ['sub', '[ Design Concept ]'],
+      ['p', '• [ Thermal Spectrum ] | 컴퓨터와 손을 물들이는 다채로운 열상(Thermal) 패턴은 각 지역 문화의 고유한 빛깔이자 인간의 체온을 상징한다.'],
+      ['p', '• [ Cold to Warm ] | 투명한 유리 질감에서 열상 컬러로 이어지는 단계적 변화로, 기계적 완벽함 너머의 인간적인 온기가 디지털 시스템을 통해 퍼져나가는 연결의 미학을 표현했다.'],
+      ['p', "• [ Digital Mandala ] | 어두운 배경 위에 컴퓨터를 감싸듯 펼쳐진 손들의 대칭 구도로, 서로 다른 문화가 조화롭게 어우러지는 '디지털 만다라'를 형상화했다."],
+      ['sub', '※ [ Tools ]'],
+      ['p', '• Adobe Photoshop (Image Compositing, Texture & Color Editing)\n• Adobe Illustrator (Typography & Layout)'],
+    ],
+    links: [['Visit Contest', 'https://26-1-dah-exhibition-poster-competit.vercel.app/content']],
   },
 
   gongmyeong: {
