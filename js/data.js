@@ -353,7 +353,7 @@ const PROJECTS = {
   chok: {
     cat: 'design', title: '촉 (觸)',
     hero: 'chok-poster.png',
-    headline: '2026-1 디지털인문예술전공 프로젝트 전시회 포스터 공모전 출품작',
+    headline: '2026-1 디지털인문예술 프로젝트 전시회 포스터 공모전 출품작',
     body: [
       ['sub', '[ Project ]'],
       ['p', 'Project : < 촉 (觸) >'],
