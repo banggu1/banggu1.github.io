@@ -53,12 +53,17 @@ img, video { display: block; max-width: 100%; }
 /* ---------- 인트로 ---------- */
 .intro { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 16px 60px; }
 .intro-stage { position: relative; width: min(980px, 100%); display: flex; flex-direction: column; align-items: center; }
-.slider { position: relative; width: 415px; max-width: 72vw; aspect-ratio: 415 / 590; }
+/* 포스터가 오른쪽에서 들어오고 왼쪽으로 빠지며 옆으로 미끄러지듯 넘어감 */
+.slider { position: relative; width: 415px; max-width: 72vw; aspect-ratio: 415 / 590; overflow: hidden; }
 .slider img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-  opacity: 0; filter: blur(14px); transition: opacity 1s ease, filter 1.2s ease;
+  transform: translateX(100%); transition: transform .9s cubic-bezier(.65, 0, .35, 1);
 }
-.slider img.on { opacity: 1; filter: blur(0); }
+.slider img.on { transform: translateX(0); }
+.slider img.prev { transform: translateX(-100%); }
+@media (prefers-reduced-motion: reduce) {
+  .slider img { transition: none; }
+}
 .intro-name {
   position: absolute; left: 50%; top: 29%; transform: translateX(-50%);
   text-align: right; pointer-events: none; white-space: nowrap;

@@ -80,7 +80,7 @@ function renderIntro() {
   document.body.innerHTML = `
   <main class="intro">
     <div class="intro-stage">
-      <div class="slider">${INTRO_SLIDES.map((s, i) => `<img src="${img(s, 830)}" alt="" ${i ? 'loading="lazy"' : ''}>`).join('')}</div>
+      <div class="slider">${INTRO_SLIDES.map(s => `<img src="${img(s, 830)}" alt="" decoding="async">`).join('')}</div>
       <div class="intro-name">
         <h1>LEE JIHYUN</h1>
         <a class="sub" href="portfolio.html">Portfolio</a>
@@ -91,11 +91,19 @@ function renderIntro() {
 
   const slides = document.querySelectorAll('.slider img');
   let cur = 0, timer;
+  // 지금 포스터는 왼쪽으로 빠지고(prev) 다음 포스터가 오른쪽에서 들어옴(on).
+  // 나머지는 애니메이션 없이 오른쪽 대기 자리로 돌려놔서 화면을 가로질러 가지 않게 함.
   const show = i => {
+    const old = cur;
     cur = (i + slides.length) % slides.length;
-    slides.forEach((s, j) => s.classList.toggle('on', j === cur));
+    slides.forEach((s, j) => {
+      const state = j === cur ? 'on' : (j === old && old !== cur ? 'prev' : '');
+      s.style.transition = state ? '' : 'none';
+      s.className = state;
+    });
   };
-  const play = () => { clearInterval(timer); timer = setInterval(() => show(cur + 1), 3500); };
+  // 다른 탭에 가 있는 동안엔 넘기지 않음 (브라우저가 애니메이션을 멈춰서, 돌아왔을 때 포스터가 화면을 가로지르는 걸 막음)
+  const play = () => { clearInterval(timer); timer = setInterval(() => { if (!document.hidden) show(cur + 1); }, 3500); };
   show(0); play();
 }
 
