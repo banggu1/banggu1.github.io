@@ -257,16 +257,24 @@ a.entry:hover .t { color: var(--black); }
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
   transition: transform .7s cubic-bezier(.65, 0, .35, 1);
 }
+/* 화살표: 이미지 바깥 양옆, 배경 없이 검은 기호만 */
+.hero-stage { position: relative; }
 .hs-btn {
-  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
-  width: 44px; height: 44px; border: 0; border-radius: 50%; cursor: pointer;
-  background: rgba(0, 0, 0, .55); color: var(--white); font-size: 26px; line-height: 1;
-  transition: background .2s;
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 64px; padding: 0; border: 0; background: none; cursor: pointer;
+  color: var(--black); font-size: 52px; line-height: 1; font-family: var(--sans); font-weight: 300;
+  transition: color .2s;
 }
-.hs-btn:hover, .hs-btn:focus-visible { background: var(--red); }
-.hs-btn.prev { left: 12px; }
-.hs-btn.next { right: 12px; }
+.hs-btn:hover, .hs-btn:focus-visible { color: var(--red); }
+.hs-btn:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+.hs-btn.prev { left: -64px; }
+.hs-btn.next { right: -64px; }
 .hs-count { text-align: center; font-family: var(--sans); font-size: 13px; color: #555; margin-top: 12px; }
+@media (max-width: 900px) {
+  .hs-btn { top: auto; bottom: -52px; transform: none; height: 44px; font-size: 40px; }
+  .hs-btn.prev { left: 0; }
+  .hs-btn.next { right: 0; }
+}
 @media (prefers-reduced-motion: reduce) {
   .hero-slider img { transition: none; }
 }

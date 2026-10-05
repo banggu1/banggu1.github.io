@@ -217,8 +217,10 @@ function renderProject() {
     ? `<video class="hero" src="${p.video}" poster="${img(p.poster)}" controls playsinline preload="metadata"></video>`
     : p.heroes ? `
       <div class="hero-wrap reveal">
-        <div class="hero-slider">
-          ${p.heroes.map((h, i) => `<img src="${img(h)}" alt="${esc(p.title)} ${i + 1}" style="transform:translateX(${i ? 100 : 0}%)">`).join('')}
+        <div class="hero-stage">
+          <div class="hero-slider">
+            ${p.heroes.map((h, i) => `<img src="${img(h)}" alt="${esc(p.title)} ${i + 1}" style="transform:translateX(${i ? 100 : 0}%)">`).join('')}
+          </div>
           <button class="hs-btn prev" aria-label="이전 이미지">‹</button>
           <button class="hs-btn next" aria-label="다음 이미지">›</button>
         </div>
@@ -288,8 +290,8 @@ function bindHeroSlider() {
     out.style.transform = `translateX(${dir > 0 ? -100 : 100}%)`;
     count.textContent = `${cur + 1} / ${imgs.length}`;
   };
-  $('.hs-btn.prev', box).addEventListener('click', () => go(-1));
-  $('.hs-btn.next', box).addEventListener('click', () => go(1));
+  $('.hs-btn.prev').addEventListener('click', () => go(-1));
+  $('.hs-btn.next').addEventListener('click', () => go(1));
   let x0 = null;
   box.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
   box.addEventListener('touchend', e => {
