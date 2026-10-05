@@ -87,9 +87,10 @@ const CATEGORIES = {
       { id: 'leon', title: 'LÉON', thumb: 'a7652d_7dbce06004cb466e80d2f6036ac3521b~mv2.png' },
     ],
   },
-  planning: {
-    label: 'PLANNING', back: 'Planning', layout: 'grid',
-    tile: 'a7652d_943c2cf933fe4d729a69aeccbb7cf367~mv2.jpg',
+  // 게임·웹처럼 직접 만들어서 움직이는 작업 (대표 이미지가 생기면 tile에 넣기)
+  interactive: {
+    label: 'INTERACTIVE', back: 'Interactive', layout: 'grid',
+    tile: null,
     items: [],
   },
   experience: {
@@ -100,8 +101,21 @@ const CATEGORIES = {
       { id: 'researcher', title: '한림대학교 박물관 보조연구원', date: '2025. 03. 17. ~ 07. 15.', thumb: 'a7652d_dc34229b0a0645c2a60f331daf1f5882~mv2.jpg' },
     ],
   },
+  // 작은 작업 모음: 상세 페이지 없이 카드 + 한 줄 설명, 누르면 이미지를 크게 넘겨 봄
+  archive: {
+    label: 'ARCHIVE', back: 'Archive', layout: 'archive',
+    tile: 'archive-shepherd-cover.png',
+    items: [
+      {
+        title: '양치기 소년 — AI 동화책',
+        meta: '2026-1 · AI디지털그래픽 기말 과제',
+        note: "고전 우화 '양치기 소년'을 어른들을 위한 인생 우화로 재해석한 동화책 디자인. 가상의 출판사 '마녀책방(MANYEO BOOKSHOP)'의 로고·삽화·목업 배경을 Gemini로 만들고, Photoshop으로 표지·내지·목업을 편집했다.",
+        images: ['archive-shepherd-cover.png', 'archive-shepherd-page1.png', 'archive-shepherd-page2.png', 'archive-shepherd-logo.png'],
+      },
+    ],
+  },
 };
-const CATEGORY_ORDER = ['awards', 'design', 'planning', 'experience'];
+const CATEGORY_ORDER = ['awards', 'design', 'interactive', 'experience', 'archive'];
 
 /*
   작품 상세 페이지.

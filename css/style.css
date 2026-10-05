@@ -279,3 +279,49 @@ a.entry:hover .t { color: var(--black); }
 @media (prefers-reduced-motion: reduce) {
   .hero-slider img { transition: none; }
 }
+
+/* ---------- 포트폴리오: 칸 5개 (마지막 칸은 가운데) ---------- */
+.tiles > .tile:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; }
+.tile.no-img { display: block; background: var(--black); }
+.tile.no-img span { opacity: 1; background: none; color: var(--red); }
+.tile.no-img:hover span { color: var(--white); }
+
+/* ---------- ARCHIVE: 작은 작업 카드 ---------- */
+.archive {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 60px 40px;
+  width: min(980px, 100% - 32px); margin: 0 auto; padding-bottom: 200px;
+}
+.arc-card {
+  display: block; text-align: left; padding: 0; border: 0; background: none; cursor: zoom-in;
+  font: inherit; color: inherit;
+}
+.arc-card .thumb { aspect-ratio: 4 / 3; overflow: hidden; background: #f2f2f2; }
+.arc-card .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.arc-card:hover .thumb img, .arc-card:focus-visible .thumb img { transform: scale(1.05); }
+.arc-card:focus-visible { outline: 2px solid var(--red); outline-offset: 6px; }
+.arc-card h3 { font-family: var(--sans); font-weight: 700; font-size: 18px; margin-top: 18px; }
+.arc-card .meta { display: block; font-family: var(--sans); font-size: 13px; color: #555; margin-top: 4px; }
+.arc-card .note { font-family: var(--sans); font-size: 14px; line-height: 1.7; margin-top: 10px; }
+
+/* ---------- 크게 보기 (라이트박스) ---------- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 100; background: rgba(0, 0, 0, .92);
+  display: flex; align-items: center; justify-content: center; padding: 56px 72px;
+}
+.lightbox[hidden] { display: none; }
+.lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; max-width: 100%; max-height: 100%; }
+.lightbox figure img { max-width: 100%; max-height: calc(100vh - 150px); object-fit: contain; }
+.lightbox figcaption { color: #ddd; font-family: var(--sans); font-size: 14px; margin-top: 14px; text-align: center; }
+.lb-close, .lb-btn {
+  position: absolute; border: 0; background: none; color: var(--white); cursor: pointer;
+  font-family: var(--sans); font-weight: 300; line-height: 1; transition: color .2s;
+}
+.lb-close { top: 14px; right: 20px; font-size: 44px; }
+.lb-btn { top: 50%; transform: translateY(-50%); font-size: 56px; width: 56px; height: 80px; }
+.lb-btn.prev { left: 8px; }
+.lb-btn.next { right: 8px; }
+.lb-close:hover, .lb-btn:hover, .lb-close:focus-visible, .lb-btn:focus-visible { color: var(--red); }
+@media (max-width: 600px) {
+  .lightbox { padding: 56px 12px 90px; }
+  .lb-btn { top: auto; bottom: 14px; transform: none; height: 56px; }
+}

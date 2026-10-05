@@ -187,7 +187,10 @@ function renderAbout() {
 function renderPortfolio() {
   const tiles = CATEGORY_ORDER.map(c => {
     const cat = CATEGORIES[c];
-    return `<a class="tile reveal" href="${categoryUrl(c)}"><img src="${img(cat.tile, 760)}" alt=""><span>${cat.label}</span></a>`;
+    // 대표 이미지가 아직 없는 칸은 글자만 보이는 타일로
+    return cat.tile
+      ? `<a class="tile reveal" href="${categoryUrl(c)}"><img src="${img(cat.tile, 760)}" alt=""><span>${cat.label}</span></a>`
+      : `<a class="tile no-img reveal" href="${categoryUrl(c)}"><span>${cat.label}</span></a>`;
   }).join('');
   shell(`<h1 class="page-title reveal">My Portfolio</h1><div class="tiles">${tiles}</div>`);
 }
@@ -200,6 +203,20 @@ function renderCategory() {
   let list;
   if (!cat.items.length) {
     list = `<p class="coming">준비 중입니다.</p>`;
+  } else if (cat.layout === 'archive') {
+    list = `<div class="archive">${cat.items.map((it, i) => `
+      <button class="arc-card reveal" type="button" data-i="${i}" aria-label="${esc(it.title)} 크게 보기">
+        <div class="thumb"><img src="${img(it.images[0])}" alt="" loading="lazy"></div>
+        <h3>${esc(it.title)}</h3>
+        <span class="meta">${esc(it.meta)}</span>
+        <p class="note">${esc(it.note)}</p>
+      </button>`).join('')}</div>
+      <div class="lightbox" hidden role="dialog" aria-modal="true" aria-label="이미지 크게 보기">
+        <button class="lb-close" type="button" aria-label="닫기">×</button>
+        <button class="lb-btn prev" type="button" aria-label="이전 이미지">‹</button>
+        <figure><img alt=""><figcaption></figcaption></figure>
+        <button class="lb-btn next" type="button" aria-label="다음 이미지">›</button>
+      </div>`;
   } else if (cat.layout === 'cards') {
     list = `<div class="cards2">${cat.items.map(it => `
       <a class="card2 reveal" href="${projectUrl(it.id)}">
@@ -218,6 +235,44 @@ function renderCategory() {
     <a class="back" href="portfolio.html"><span>&gt;&gt;</span> Back to Portfolio</a>
     <h1 class="cat-title reveal">${cat.label}</h1>
     ${list}`);
+  if (cat.layout === 'archive' && cat.items.length) bindLightbox(cat.items);
+}
+
+// ARCHIVE: 카드를 누르면 그 작업의 이미지들을 화면 가득 넘겨 봄 (←/→, Esc 키도 됨)
+function bindLightbox(items) {
+  const lb = $('.lightbox');
+  const pic = $('figure img', lb);
+  const cap = $('figcaption', lb);
+  let imgs = [], cur = 0, title = '', opener = null;
+  const show = i => {
+    cur = (i + imgs.length) % imgs.length;
+    pic.src = img(imgs[cur]);
+    cap.textContent = `${title}  ·  ${cur + 1} / ${imgs.length}`;
+    lb.querySelectorAll('.lb-btn').forEach(b => { b.hidden = imgs.length < 2; });
+  };
+  const close = () => {
+    lb.hidden = true;
+    document.body.style.overflow = '';
+    if (opener) opener.focus();
+  };
+  document.querySelectorAll('.arc-card').forEach(card => card.addEventListener('click', () => {
+    const it = items[+card.dataset.i];
+    imgs = it.images; title = it.title; opener = card;
+    show(0);
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+    $('.lb-close', lb).focus();
+  }));
+  $('.lb-close', lb).addEventListener('click', close);
+  $('.lb-btn.prev', lb).addEventListener('click', () => show(cur - 1));
+  $('.lb-btn.next', lb).addEventListener('click', () => show(cur + 1));
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', e => {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(cur - 1);
+    if (e.key === 'ArrowRight') show(cur + 1);
+  });
 }
 
 /* ---------- 작품 상세 ---------- */
