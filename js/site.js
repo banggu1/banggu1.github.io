@@ -83,12 +83,19 @@ function bindForm() {
 
 // 스크롤하면 서서히 나타나는 효과
 function bindReveal() {
-  const els = document.querySelectorAll('.reveal');
+  const els = document.querySelectorAll('.reveal, .wipe');
   if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
   }, { threshold: 0.12 });
-  els.forEach(el => io.observe(el));
+  els.forEach(el => {
+    if (!el.classList.contains('wipe')) return io.observe(el);
+    // 다 가려진(clip-path) 요소는 화면에 들어와도 감지가 안 돼서, 대신 감싸는 칸이 보이면 나타나게 함
+    const wo = new IntersectionObserver(([en]) => {
+      if (en.isIntersecting) { el.classList.add('in'); wo.disconnect(); }
+    });
+    wo.observe(el.parentElement);
+  });
 }
 
 function shell(main, { withFooter = true } = {}) {
@@ -148,7 +155,7 @@ function renderAbout() {
   shell(`
   <div class="wrap">
     <section class="bio-hero">
-      <div class="reveal">
+      <div class="wipe wipe-down">
         <span class="tag">Lee JiHyun</span>
         <div class="roles">
           <span class="q open">“</span>
@@ -156,10 +163,10 @@ function renderAbout() {
           <span class="q close">”</span>
         </div>
       </div>
-      <img class="poster reveal" src="${img(BIO.poster, 700)}" alt="흐르는 경계, DAH 포스터">
+      <img class="poster wipe wipe-up" src="${img(BIO.poster, 700)}" alt="흐르는 경계, DAH 포스터">
     </section>
 
-    <section class="bio-copy reveal">
+    <section class="bio-copy wipe wipe-right">
       <h2>Turning 'What if' into 'Best Project'.</h2>
       <p>Crisp Logic, Bold Aesthetics. 상상을 '현실'이라는 결과물로 소환하는 올라운더 크리에이터 이지현입니다.</p>
     </section>
