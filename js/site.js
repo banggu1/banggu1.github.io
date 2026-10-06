@@ -216,7 +216,7 @@ function renderCategory() {
   } else if (cat.layout === 'archive') {
     list = `<div class="archive">${cat.items.map((it, i) => `
       <button class="arc-card reveal" type="button" data-i="${i}" aria-label="${esc(it.title)} 크게 보기">
-        <div class="thumb"><img src="${img(it.images[0])}" alt="" loading="lazy"></div>
+        <div class="thumb"><img src="${img(it.thumb || it.images[0])}" alt="" loading="lazy"></div>
         <h3>${esc(it.title)}</h3>
         <span class="meta">${esc(it.meta)}</span>
         <p class="note">${esc(it.note)}</p>

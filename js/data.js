@@ -124,6 +124,31 @@ const CATEGORIES = {
         note: "고전 우화 '양치기 소년'을 어른들을 위한 인생 우화로 재해석한 동화책 디자인. 가상의 출판사 '마녀책방(MANYEO BOOKSHOP)'의 로고·삽화·목업 배경을 Gemini로 만들고, Photoshop으로 표지·내지·목업을 편집했다.",
         images: ['archive-shepherd-cover.png', 'archive-shepherd-page1.png', 'archive-shepherd-page2.png', 'archive-shepherd-logo.png'],
       },
+      {
+        title: 'Chicken on the Road — 단편 만화',
+        meta: '2023-2 개인 프로젝트 · 만화',
+        note: "'닭이 도로를 건넌다. 트럭이 달려온다.' 다음 장면을 이어 그린 단편 만화. 닭은 자신을 도축해 납품하는 트럭에 치이고, 주변 동물들은 아무도 말리지 않은 채 휴대폰으로 촬영만 한다. 닭이 왜 길을 건넜는지는 끝내 알 수 없다. ibisPaint로 그렸다.",
+        thumb: 'archive-chicken-thumb.png',
+        images: ['archive-chicken-1.png', 'archive-chicken-2.png'],
+      },
+      {
+        title: '한림 택리지 — 캠퍼스 일러스트',
+        meta: '2024-1 팀 프로젝트 · 일러스트 채색',
+        note: '일송기념도서관·박물관·다비드상 등 한림대학교 캠퍼스의 장소와 이야기를 담은 팀 과제. 일러스트 채색을 ibisPaint로 맡았고, 자료 조사도 가장 많은 분량을 맡았다. 채색한 일러스트로 수업 투표에서 많은 표를 받았다. (선화는 다른 팀원이 그림)',
+        images: ['archive-taengniji-color.png', 'archive-taengniji-line.png'],
+      },
+      {
+        title: '소소한 크리스마스 — 포스터',
+        meta: '2024-2 팀 프로젝트 · 포스터 디자인',
+        note: "한림대 인문관 앞 소녀 동상이 움직인다는 괴담에서 출발한 크리스마스 이야기. 크리스마스에 '동상이 움직인다'는 전단을 무시하고 도서관을 나선 주인공에게, 외로웠던 동상이 말을 걸어온다. 포스터 그림을 ibisPaint와 Photoshop으로 그리고, 제목 타이포그래피를 Illustrator로 만들었다.",
+        images: ['archive-xmas-poster.png'],
+      },
+      {
+        title: '마음을 모아, 춘천 — 발표 자료',
+        meta: '2024-1 팀 프로젝트 · 발표 자료 디자인',
+        note: '색을 잃고 회색 도시가 되어 가는 춘천에서, 봉황과 친구들이 시민들의 행복한 기억을 되찾아 주는 축제를 연다는 공공미술 프로젝트. 발표 자료(PPT) 전체 디자인을 Canva로 맡았다. (캐릭터와 발표는 다른 팀원이 맡음)',
+        images: ['archive-chuncheon-01.png', 'archive-chuncheon-02.png', 'archive-chuncheon-03.png', 'archive-chuncheon-04.png', 'archive-chuncheon-05.png', 'archive-chuncheon-06.png', 'archive-chuncheon-07.png', 'archive-chuncheon-08.png', 'archive-chuncheon-09.png', 'archive-chuncheon-10.png', 'archive-chuncheon-11.png', 'archive-chuncheon-12.png', 'archive-chuncheon-13.png', 'archive-chuncheon-14.png', 'archive-chuncheon-15.png', 'archive-chuncheon-16.png', 'archive-chuncheon-17.png', 'archive-chuncheon-18.png', 'archive-chuncheon-19.png'],
+      },
     ],
   },
 };
