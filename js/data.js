@@ -484,7 +484,7 @@ const PROJECTS = {
 
   chardesign: {
     cat: 'design', title: '캐릭터 디자인 — 리모델링 · 외주 · 창작',
-    heroes: ['cd-luna.png', 'cd-noa.png', 'cd-yuzume-cover.png', 'cd-yuzume-sheet.png', 'cd-yuzume-profile.png'],
+    heroes: ['cd-luna.png', 'cd-noa.png', 'cd-yuzume-sheet.png', 'cd-yuzume-profile.png'],
     heroRatio: '16 / 10',
     headline: '2025-1 개인 프로젝트 · 캐릭터 디자인',
     body: [
