@@ -127,7 +127,7 @@ const CATEGORIES = {
     ],
   },
 };
-const CATEGORY_ORDER = ['awards', 'design', 'interactive', 'experience', 'archive'];
+const CATEGORY_ORDER = ['awards', 'design', 'interactive', 'archive', 'experience'];
 
 /*
   작품 상세 페이지.
