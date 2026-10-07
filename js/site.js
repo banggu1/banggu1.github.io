@@ -142,7 +142,7 @@ function renderIntro() {
   document.body.innerHTML = `
   <main class="intro">
     <div class="intro-stage">
-      <div class="slider">${INTRO_SLIDES.map(s => `<img src="${img(s, 830)}" alt="" decoding="async">`).join('')}<i class="curtain"></i></div>
+      <div class="slider">${INTRO_SLIDES.map(s => `<img src="${img(s, 830)}" alt="" decoding="async">`).join('')}</div>
       <div class="intro-name">
         <h1>LEE JIHYUN</h1>
         <a class="sub" href="portfolio.html">Portfolio</a>
@@ -154,20 +154,21 @@ function renderIntro() {
   bindCursor();
 
   const slides = document.querySelectorAll('.slider img');
-  const curtain = document.querySelector('.slider .curtain');
-  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let cur = 0, timer;
-  // 빨간 막이 왼쪽에서 오른쪽으로 쓱 지나가며 화면을 덮는 순간에 포스터를 바꿈
-  const swap = () => slides.forEach((s, j) => { s.style.transition = 'none'; s.className = j === cur ? 'on' : ''; });
-  const show = (i, first) => {
+  // 지금 포스터는 왼쪽으로 빠지고(prev) 다음 포스터가 오른쪽에서 들어옴(on).
+  // 나머지는 애니메이션 없이 오른쪽 대기 자리로 돌려놔서 화면을 가로질러 가지 않게 함.
+  const show = i => {
+    const old = cur;
     cur = (i + slides.length) % slides.length;
-    if (first || still) return swap();
-    curtain.classList.remove('run'); void curtain.offsetWidth; curtain.classList.add('run');
-    setTimeout(swap, 450);
+    slides.forEach((s, j) => {
+      const state = j === cur ? 'on' : (j === old && old !== cur ? 'prev' : '');
+      s.style.transition = state ? '' : 'none';
+      s.className = state;
+    });
   };
   // 다른 탭에 가 있는 동안엔 넘기지 않음 (브라우저가 애니메이션을 멈춰서, 돌아왔을 때 포스터가 화면을 가로지르는 걸 막음)
   const play = () => { clearInterval(timer); timer = setInterval(() => { if (!document.hidden) show(cur + 1); }, 3500); };
-  show(0, true); play();
+  show(0); play();
 }
 
 /* ---------- BIO ---------- */

@@ -74,11 +74,6 @@ img, video { display: block; max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .slider img { transition: none; }
 }
-/* 포스터 바뀔 때 지나가는 빨간 막 */
-.slider .curtain { position: absolute; inset: 0; z-index: 2; background: var(--red); transform: translateX(-101%); pointer-events: none; }
-.slider .curtain.run { animation: curtain .9s cubic-bezier(.77, 0, .18, 1); }
-@keyframes curtain { 0% { transform: translateX(-101%); } 45%, 55% { transform: translateX(0); } 100% { transform: translateX(101%); } }
-
 /* 이름·Portfolio가 왼쪽에서 오른쪽으로 닦이듯 나타남 */
 .intro-name h1 { animation: wipeIn 1.1s cubic-bezier(.77, 0, .18, 1) .2s both; }
 .intro-name .sub { animation: wipeIn .9s cubic-bezier(.77, 0, .18, 1) .9s both; }
