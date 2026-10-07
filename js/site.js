@@ -10,7 +10,6 @@ function header() {
   <header class="site-header">
     <a class="logo" href="index.html">${esc(SITE.name)}</a>
     <nav class="header-right">
-      <a class="insta" href="${SITE.instagram}" target="_blank" rel="noopener">Instagram</a>
       <button class="avatar" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="site-menu">
         <img src="${img(SITE.avatar, 120)}" alt="">
         <img src="${img(SITE.avatarHover, 120)}" alt="">
@@ -21,6 +20,7 @@ function header() {
         <a href="portfolio.html">PORTFOLIO</a>
         <div class="sub">${CATEGORY_ORDER.map(c => `<a href="category.html?c=${c}">${esc(CATEGORIES[c].label)}</a>`).join('')}</div>
         <a href="#contact">CONTACT</a>
+        <a class="ig" href="${SITE.instagram}" target="_blank" rel="noopener">INSTAGRAM ↗</a>
       </div>
     </nav>
   </header>`;
@@ -153,7 +153,7 @@ function bindCursor() {
   loop();
 }
 
-// 배경음악 플레이어 (왼쪽 아래). 자동 재생은 브라우저가 막아서, 누르면 재생.
+// 배경음악 플레이어 (헤더 오른쪽, 프로필 사진 옆 / 헤더 없는 첫 화면은 오른쪽 위). 자동 재생은 브라우저가 막아서, 누르면 재생.
 // 페이지를 옮겨도 이어서 듣도록 재생 위치·상태를 sessionStorage에 잠깐 기억함
 function bindMusic() {
   const box = document.createElement('div');
@@ -164,7 +164,8 @@ function bindMusic() {
       <span class="bgm-icon" aria-hidden="true"></span>
     </button>
     <span class="bgm-title"><b>LAYER 01</b><span>RE:EDIT · BGM</span></span>`;
-  document.body.append(box);
+  const head = document.querySelector('.header-right');
+  if (head) head.prepend(box); else { box.classList.add('float'); document.body.append(box); }
   const audio = new Audio('audio/layer01.mp3');
   audio.loop = true; audio.volume = 0.45; audio.preload = 'none';
   const btn = box.querySelector('.bgm-btn');
