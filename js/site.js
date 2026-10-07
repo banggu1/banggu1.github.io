@@ -11,12 +11,35 @@ function header() {
     <a class="logo" href="index.html">${esc(SITE.name)}</a>
     <nav class="header-right">
       <a class="insta" href="${SITE.instagram}" target="_blank" rel="noopener">Instagram</a>
-      <a class="avatar" href="about.html" aria-label="BIO">
+      <button class="avatar" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="site-menu">
         <img src="${img(SITE.avatar, 120)}" alt="">
         <img src="${img(SITE.avatarHover, 120)}" alt="">
-      </a>
+      </button>
+      <div class="site-menu" id="site-menu" hidden>
+        <a href="index.html">HOME</a>
+        <a href="about.html">BIO</a>
+        <a href="portfolio.html">PORTFOLIO</a>
+        <div class="sub">${CATEGORY_ORDER.map(c => `<a href="category.html?c=${c}">${esc(CATEGORIES[c].label)}</a>`).join('')}</div>
+        <a href="#contact">CONTACT</a>
+      </div>
     </nav>
   </header>`;
+}
+
+// 프로필 사진을 누르면 메뉴가 위에서 아래로 펼쳐짐. 바깥을 누르거나 Esc를 누르면 닫힘
+function bindMenu() {
+  const btn = document.querySelector('.site-header .avatar'), menu = document.getElementById('site-menu');
+  if (!btn || !menu) return;
+  const set = open => {
+    btn.setAttribute('aria-expanded', open);
+    btn.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+    if (open) { menu.hidden = false; requestAnimationFrame(() => menu.classList.add('open')); }
+    else { menu.classList.remove('open'); setTimeout(() => { if (!menu.classList.contains('open')) menu.hidden = true; }, 350); }
+  };
+  btn.addEventListener('click', e => { e.stopPropagation(); set(btn.getAttribute('aria-expanded') !== 'true'); });
+  document.addEventListener('click', e => { if (!menu.contains(e.target)) set(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) { set(false); btn.focus(); } });
+  menu.addEventListener('click', e => { if (e.target.closest('a')) set(false); });
 }
 
 function footer() {
@@ -134,6 +157,7 @@ function shell(main, { withFooter = true } = {}) {
   document.body.innerHTML = `<a id="top"></a>${header()}<main>${main}</main>${withFooter ? footer() : ''}`;
   bindForm();
   bindReveal();
+  bindMenu();
   bindCursor();
 }
 
