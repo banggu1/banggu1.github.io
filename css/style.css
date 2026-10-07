@@ -50,10 +50,11 @@ img, video { display: block; max-width: 100%; }
 .wipe { transition: clip-path 1.2s cubic-bezier(.77, 0, .18, 1); }
 .wipe-down { clip-path: inset(-80px -80px 100% -80px); }
 .wipe-up { clip-path: inset(100% 0 0 0); transition-delay: .35s; }
-.wipe-right { clip-path: inset(-20px 100% -20px 0); transition-delay: .2s; }
+/* 한글 줄이 칸 왼쪽 밖으로 길게 나가므로, 가림 영역도 왼쪽으로 넓게 잡음 */
+.wipe-right { clip-path: inset(-20px calc(100% + 600px) -20px -600px); transition-delay: .2s; }
 .wipe-down.in { clip-path: inset(-80px -80px -80px -80px); }
 .wipe-up.in { clip-path: inset(0 0 0 0); }
-.wipe-right.in { clip-path: inset(-20px -20px -20px 0); }
+.wipe-right.in { clip-path: inset(-20px -20px -20px -600px); }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .wipe { clip-path: none; transition: none; }
