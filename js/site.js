@@ -168,7 +168,7 @@ function renderAbout() {
 
     <section class="bio-copy wipe wipe-right">
       <h2>What if, I make it.</h2>
-      <p>떠오른 상상을 직접 그리고 만들어 내는 이지현입니다.</p>
+      <p>상상을 결과물로 완성하는 디자이너 이지현입니다.</p>
     </section>
 
     <section class="cols">
