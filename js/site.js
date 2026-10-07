@@ -98,10 +98,43 @@ function bindReveal() {
   });
 }
 
+// 빨간 커서: 작은 점 + 살짝 늦게 따라오는 원. 링크 위에선 원이 커지고, 작품 위에선 VIEW 표시.
+// 마우스가 있는 기기에서만 켬 (폰·태블릿 터치에선 원래대로)
+function bindCursor() {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const dot = document.createElement('div'), ring = document.createElement('div');
+  dot.className = 'cur-dot'; ring.className = 'cur-ring';
+  ring.innerHTML = '<span>VIEW</span>';
+  document.body.append(dot, ring);
+  document.documentElement.classList.add('has-cursor');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y, shown = false;
+  addEventListener('mousemove', e => {
+    x = e.clientX; y = e.clientY;
+    dot.style.transform = `translate(${x}px, ${y}px)`;
+    if (!shown) { shown = true; rx = x; ry = y; dot.classList.add('on'); ring.classList.add('on'); }
+  });
+  document.addEventListener('mouseleave', () => { shown = false; dot.classList.remove('on'); ring.classList.remove('on'); });
+  addEventListener('mouseover', e => {
+    const t = e.target;
+    ring.classList.toggle('view', !!t.closest('.tile, .card, .card2, .arc-card, .slider'));
+    ring.classList.toggle('link', !!t.closest('a, button, label, .hs-btn'));
+    const typing = !!t.closest('input, textarea, select');
+    dot.classList.toggle('hide', typing); ring.classList.toggle('hide', typing);
+  });
+  const loop = () => {
+    rx += (x - rx) * (still ? 1 : 0.18); ry += (y - ry) * (still ? 1 : 0.18);
+    ring.style.transform = `translate(${rx}px, ${ry}px)`;
+    requestAnimationFrame(loop);
+  };
+  loop();
+}
+
 function shell(main, { withFooter = true } = {}) {
   document.body.innerHTML = `<a id="top"></a>${header()}<main>${main}</main>${withFooter ? footer() : ''}`;
   bindForm();
   bindReveal();
+  bindCursor();
 }
 
 /* ---------- 인트로 ---------- */
@@ -109,31 +142,32 @@ function renderIntro() {
   document.body.innerHTML = `
   <main class="intro">
     <div class="intro-stage">
-      <div class="slider">${INTRO_SLIDES.map(s => `<img src="${img(s, 830)}" alt="" decoding="async">`).join('')}</div>
+      <div class="slider">${INTRO_SLIDES.map(s => `<img src="${img(s, 830)}" alt="" decoding="async">`).join('')}<i class="curtain"></i></div>
       <div class="intro-name">
         <h1>LEE JIHYUN</h1>
         <a class="sub" href="portfolio.html">Portfolio</a>
       </div>
     </div>
     <a class="go" href="about.html">GO</a>
+    <div class="marquee" aria-hidden="true"><div class="track">${'<span>DESIGNER · PLANNER · CREATOR · </span>'.repeat(6)}</div></div>
   </main>`;
+  bindCursor();
 
   const slides = document.querySelectorAll('.slider img');
+  const curtain = document.querySelector('.slider .curtain');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let cur = 0, timer;
-  // 지금 포스터는 왼쪽으로 빠지고(prev) 다음 포스터가 오른쪽에서 들어옴(on).
-  // 나머지는 애니메이션 없이 오른쪽 대기 자리로 돌려놔서 화면을 가로질러 가지 않게 함.
-  const show = i => {
-    const old = cur;
+  // 빨간 막이 왼쪽에서 오른쪽으로 쓱 지나가며 화면을 덮는 순간에 포스터를 바꿈
+  const swap = () => slides.forEach((s, j) => { s.style.transition = 'none'; s.className = j === cur ? 'on' : ''; });
+  const show = (i, first) => {
     cur = (i + slides.length) % slides.length;
-    slides.forEach((s, j) => {
-      const state = j === cur ? 'on' : (j === old && old !== cur ? 'prev' : '');
-      s.style.transition = state ? '' : 'none';
-      s.className = state;
-    });
+    if (first || still) return swap();
+    curtain.classList.remove('run'); void curtain.offsetWidth; curtain.classList.add('run');
+    setTimeout(swap, 450);
   };
   // 다른 탭에 가 있는 동안엔 넘기지 않음 (브라우저가 애니메이션을 멈춰서, 돌아왔을 때 포스터가 화면을 가로지르는 걸 막음)
   const play = () => { clearInterval(timer); timer = setInterval(() => { if (!document.hidden) show(cur + 1); }, 3500); };
-  show(0); play();
+  show(0, true); play();
 }
 
 /* ---------- BIO ---------- */
