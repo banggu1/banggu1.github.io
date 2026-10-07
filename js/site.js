@@ -153,12 +153,46 @@ function bindCursor() {
   loop();
 }
 
+// 배경음악 플레이어 (왼쪽 아래). 자동 재생은 브라우저가 막아서, 누르면 재생.
+// 페이지를 옮겨도 이어서 듣도록 재생 위치·상태를 sessionStorage에 잠깐 기억함
+function bindMusic() {
+  const box = document.createElement('div');
+  box.className = 'bgm';
+  box.innerHTML = `
+    <button class="bgm-btn" type="button" aria-label="배경음악 재생" aria-pressed="false">
+      <img src="images/bgm-cover.webp" alt="">
+      <span class="bgm-icon" aria-hidden="true"></span>
+    </button>
+    <span class="bgm-title"><b>LAYER 01</b><span>RE:EDIT · BGM</span></span>`;
+  document.body.append(box);
+  const audio = new Audio('audio/layer01.mp3');
+  audio.loop = true; audio.volume = 0.45; audio.preload = 'none';
+  const btn = box.querySelector('.bgm-btn');
+  const store = (k, v) => { try { v === undefined ? sessionStorage.removeItem(k) : sessionStorage.setItem(k, v); } catch (e) {} };
+  const read = k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
+  const ui = on => {
+    box.classList.toggle('playing', on);
+    btn.setAttribute('aria-pressed', on);
+    btn.setAttribute('aria-label', on ? '배경음악 정지' : '배경음악 재생');
+  };
+  const play = () => audio.play().then(() => { ui(true); store('bgm-on', '1'); }).catch(() => ui(false));
+  btn.addEventListener('click', () => {
+    if (audio.paused) play();
+    else { audio.pause(); ui(false); store('bgm-on'); }
+  });
+  addEventListener('pagehide', () => store('bgm-t', audio.currentTime));
+  const t = parseFloat(read('bgm-t'));
+  if (t) audio.currentTime = t;
+  if (read('bgm-on')) { audio.preload = 'auto'; play(); }
+}
+
 function shell(main, { withFooter = true } = {}) {
   document.body.innerHTML = `<a id="top"></a>${header()}<main>${main}</main>${withFooter ? footer() : ''}`;
   bindForm();
   bindReveal();
   bindMenu();
   bindCursor();
+  bindMusic();
 }
 
 /* ---------- 인트로 ---------- */
@@ -176,6 +210,7 @@ function renderIntro() {
     <div class="marquee" aria-hidden="true"><div class="track">${'<span>DESIGNER · PLANNER · CREATOR · </span>'.repeat(20)}</div></div>
   </main>`;
   bindCursor();
+  bindMusic();
 
   const slides = document.querySelectorAll('.slider img');
   let cur = 0, timer;
