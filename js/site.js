@@ -173,7 +173,7 @@ function renderIntro() {
       </div>
     </div>
     <a class="go" href="about.html">GO</a>
-    <div class="marquee" aria-hidden="true"><div class="track">${'<span>DESIGNER · PLANNER · CREATOR · </span>'.repeat(6)}</div></div>
+    <div class="marquee" aria-hidden="true"><div class="track">${'<span>DESIGNER · PLANNER · CREATOR · </span>'.repeat(20)}</div></div>
   </main>`;
   bindCursor();
 
