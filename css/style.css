@@ -95,13 +95,13 @@ img, video { display: block; max-width: 100%; }
 .intro-name .sub { animation: wipeIn .9s cubic-bezier(.77, 0, .18, 1) .9s both; }
 @keyframes wipeIn { from { clip-path: inset(-30% 100% -30% -5%); } to { clip-path: inset(-30% -5% -30% -5%); } }
 
-/* 아래쪽에 계속 흘러가는 글자 띠 */
+/* 아래쪽에 계속 흘러가는 글자 띠 (빨간 바탕에 흰 글자) */
 .intro { overflow-x: hidden; }
-.marquee { width: 100vw; overflow: hidden; margin-top: 120px; border-top: 1.5px solid #000; border-bottom: 1.5px solid #000; padding: 6px 0; }
+.marquee { width: 100vw; overflow: hidden; margin-top: 120px; background: var(--red); padding: 8px 0; }
 .marquee .track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
 .marquee span {
   font-family: var(--impact); font-weight: 800; font-synthesis: none; font-size: clamp(16px, 2.2vw, 28px);
-  white-space: pre; color: transparent; -webkit-text-stroke: 1px #000; padding-right: .3em;
+  white-space: pre; color: var(--white); padding-right: .3em;
 }
 @keyframes marquee { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
