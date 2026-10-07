@@ -110,7 +110,7 @@ const CATEGORIES = {
     tile: 'a7652d_78c7adbf989c4bceb0380b22ef23122d~mv2.jpg',
     items: [
       { id: 'supporters', title: '한림대학교 박물관 서포터즈 6기', date: '2024. 09. 06. ~ 12. 11.', thumb: 'a7652d_bf216efc99db4651ad091fcaccdc26b5~mv2.png' },
-      { id: 'researcher', title: '한림대학교 박물관 보조연구원', date: '2025. 03. 17. ~ 07. 15.', thumb: 'a7652d_dc34229b0a0645c2a60f331daf1f5882~mv2.jpg' },
+      { id: 'researcher', title: '한림대학교 박물관 보조연구원', date: '2025. 03. 17. ~ 07. 15.', thumb: 'museon-card.png' },
     ],
   },
   // 작은 작업 모음: 상세 페이지 없이 카드 + 한 줄 설명, 누르면 이미지를 크게 넘겨 봄
