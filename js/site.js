@@ -167,8 +167,8 @@ function renderAbout() {
     </section>
 
     <section class="bio-copy wipe wipe-right">
-      <h2>Turning 'What if' into 'Best Project'.</h2>
-      <p>Crisp Logic, Bold Aesthetics. 상상을 '현실'이라는 결과물로 소환하는 올라운더 크리에이터 이지현입니다.</p>
+      <h2>What if, I make it.</h2>
+      <p>떠오른 상상을 직접 그리고 만들어 내는 이지현입니다.</p>
     </section>
 
     <section class="cols">
