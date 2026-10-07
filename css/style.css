@@ -191,7 +191,7 @@ a.entry:hover .t { color: var(--black); }
   transition: transform .2s, background .2s;
 }
 .big-btn:hover { background: var(--black); transform: scale(1.03); }
-.contact-info { text-align: right; padding: 300px 0 60px; }
+.contact-info { text-align: left; padding: 300px 0 60px; }
 .contact-info h3 { font-family: var(--sans); font-weight: 700; font-size: 22px; line-height: 1.2; }
 .contact-info p { font-size: 16px; margin-top: 12px; line-height: 1.8; }
 
@@ -371,7 +371,7 @@ a.entry:hover .t { color: var(--black); }
   width: min(980px, 100% - 32px); margin: 0 auto; padding-bottom: 200px;
 }
 .arc-card {
-  display: block; text-align: left; padding: 0; border: 0; background: none; cursor: zoom-in;
+  display: block; align-self: start; text-align: left; padding: 0; border: 0; background: none; cursor: zoom-in;
   font: inherit; color: inherit;
 }
 .arc-card .thumb { aspect-ratio: 4 / 3; overflow: hidden; background: #f2f2f2; }
@@ -422,7 +422,8 @@ a.entry:hover .t { color: var(--black); }
 
 /* ---------- 배경음악 플레이어 (헤더 오른쪽 / 첫 화면은 오른쪽 위) ---------- */
 .bgm { display: flex; align-items: center; gap: 10px; flex-direction: row-reverse; }
-.bgm.float { position: fixed; right: 72px; top: 34px; z-index: 70; }
+/* 첫 화면엔 헤더가 없어서, 다른 페이지 헤더 속 플레이어와 똑같은 자리에 띄움 (헤더 여백 72 + 프로필 51 + 간격 56) */
+.bgm.float { position: absolute; right: 179px; top: 36px; z-index: 70; }
 .bgm-btn { position: relative; width: 48px; height: 48px; padding: 0; border: 0; border-radius: 50%; overflow: hidden; cursor: pointer; background: #000; box-shadow: 0 2px 10px rgba(0,0,0,.3); flex: none; }
 .bgm-btn img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .bgm.playing .bgm-btn img { animation: bgm-spin 6s linear infinite; }
@@ -439,6 +440,6 @@ a.entry:hover .t { color: var(--black); }
 @media (max-width: 900px) {
   .bgm-title { display: none; }
   .bgm-btn { width: 40px; height: 40px; }
-  .bgm.float { right: 16px; top: 22px; }
+  .bgm.float { right: 72px; top: 22px; }
 }
 @media (prefers-reduced-motion: reduce) { .bgm.playing .bgm-btn img { animation: none; } }
