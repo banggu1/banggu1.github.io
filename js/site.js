@@ -250,6 +250,24 @@ function renderAbout() {
       <p>${esc(SITE.phone)}<br><a href="mailto:${SITE.email}">${esc(SITE.email)}</a></p>
     </section>
   </div>`);
+  fitBioLine();
+}
+
+// 폰에서는 한글 소개 한 줄을 포스터 폭에 딱 맞게 글자 크기를 조절함 (넓은 화면은 원래 크기)
+function fitBioLine() {
+  const p = document.querySelector('.bio-copy p'), poster = document.querySelector('.bio-hero .poster');
+  if (!p || !poster) return;
+  const fit = () => {
+    p.style.fontSize = '';
+    if (!matchMedia('(max-width: 900px)').matches) return;
+    const r = document.createRange(); r.selectNodeContents(p);
+    const textW = r.getBoundingClientRect().width, target = poster.getBoundingClientRect().width;
+    if (textW && target) p.style.fontSize = (parseFloat(getComputedStyle(p).fontSize) * target / textW).toFixed(2) + 'px';
+  };
+  fit();
+  addEventListener('resize', fit);
+  if (document.fonts) document.fonts.ready.then(fit);
+  poster.complete ? fit() : poster.addEventListener('load', fit);
 }
 
 /* ---------- 포트폴리오 ---------- */

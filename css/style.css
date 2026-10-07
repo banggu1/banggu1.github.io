@@ -300,9 +300,13 @@ a.entry:hover .t { color: var(--black); }
   .roles p { font-size: 44px; }
   .roles .q.close { left: 170px; }
   .bio-hero .poster { margin: 60px auto 0; width: min(330px, 100%); }
-  .bio-copy { margin: -18px 0 0; padding: 0 0 100px; width: auto; }
-  .bio-copy h2 { font-size: 30px; white-space: normal; justify-content: flex-start; }
-  .bio-copy p { white-space: normal; display: block; }
+  /* 폰: 제목·소개 줄을 포스터 폭에 맞춰 가운데 정렬 (한글 줄 글자 크기는 fitBioLine이 맞춤) */
+  .bio-copy { margin: -18px auto 0; padding: 0 0 100px; width: min(330px, 100%); }
+  .bio-copy h2 { font-size: 30px; justify-content: center; }
+  .bio-copy p { white-space: nowrap; display: block; width: max-content; margin-left: auto; margin-right: auto; }
+  /* 폰에서 양옆 여백을 넉넉하게 */
+  .wrap, .grid, .archive, .project { width: min(var(--wrap), 100% - 48px); }
+  .cards2 { padding-left: 24px; padding-right: 24px; }
   .cols { grid-template-columns: 1fr; gap: 40px; padding-bottom: 140px; width: auto; max-width: none; margin-left: 0; transform: none; }
   .big-btn { font-size: 36px; }
   .contact-info { padding: 140px 0 40px; }
