@@ -108,9 +108,10 @@ function bindForm() {
 function bindReveal() {
   const els = document.querySelectorAll('.reveal, .wipe');
   if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
+  // 화면 아래 12% 선을 넘는 순간 나타남 (높이와 상관없이 같은 줄의 카드는 같이 나타나서 정렬이 어긋나 보이지 않음)
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-  }, { threshold: 0.12 });
+  }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
   els.forEach(el => {
     if (!el.classList.contains('wipe')) return io.observe(el);
     // 다 가려진(clip-path) 요소는 화면에 들어와도 감지가 안 돼서, 대신 감싸는 칸이 보이면 나타나게 함
@@ -167,7 +168,7 @@ function bindMusic() {
   const head = document.querySelector('.header-right');
   if (head) head.prepend(box); else { box.classList.add('float'); document.body.append(box); }
   const audio = new Audio('audio/layer01.mp3');
-  audio.loop = true; audio.volume = 0.45; audio.preload = 'none';
+  audio.loop = true; audio.volume = 0.45; audio.preload = 'metadata';
   const btn = box.querySelector('.bgm-btn');
   const store = (k, v) => { try { v === undefined ? sessionStorage.removeItem(k) : sessionStorage.setItem(k, v); } catch (e) {} };
   const read = k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
@@ -176,15 +177,41 @@ function bindMusic() {
     btn.setAttribute('aria-pressed', on);
     btn.setAttribute('aria-label', on ? '배경음악 정지' : '배경음악 재생');
   };
-  const play = () => audio.play().then(() => { ui(true); store('bgm-on', '1'); }).catch(() => ui(false));
+  const VOL = 0.45;
+  // 소리를 부드럽게 키우고 줄임 (페이지가 바뀌는 순간 뚝 끊기는 느낌을 줄이려고)
+  let fadeTimer;
+  const fade = (to, ms, done) => {
+    clearInterval(fadeTimer);
+    const from = audio.volume, start = performance.now();
+    fadeTimer = setInterval(() => {
+      const k = Math.min(1, (performance.now() - start) / ms);
+      audio.volume = from + (to - from) * k;
+      if (k === 1) { clearInterval(fadeTimer); done && done(); }
+    }, 16);
+  };
+  const play = (smooth) => {
+    if (smooth) audio.volume = 0;
+    return audio.play().then(() => { ui(true); store('bgm-on', '1'); fade(VOL, smooth ? 700 : 150); }).catch(() => ui(false));
+  };
   btn.addEventListener('click', () => {
-    if (audio.paused) play();
+    if (audio.paused) { audio.volume = VOL; play(); }
     else { audio.pause(); ui(false); store('bgm-on'); }
   });
-  addEventListener('pagehide', () => store('bgm-t', audio.currentTime));
-  const t = parseFloat(read('bgm-t'));
-  if (t) audio.currentTime = t;
-  if (read('bgm-on')) { audio.preload = 'auto'; play(); }
+  // 지금 위치와 시각을 기억 → 다음 페이지에서 로딩에 걸린 시간만큼 앞으로 당겨서 이어 재생
+  const save = () => { store('bgm-t', audio.currentTime); store('bgm-at', Date.now()); };
+  addEventListener('pagehide', save);
+  // 사이트 안 링크를 누르면 소리를 살짝 줄인 뒤 이동
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href]');
+    if (!a || audio.paused || a.target === '_blank' || e.ctrlKey || e.metaKey || e.shiftKey || e.button) return;
+    const url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || (url.pathname === location.pathname && url.search === location.search && url.hash)) return;
+    e.preventDefault();
+    fade(0, 220, () => { save(); location.href = url.href; });
+  });
+  const t = parseFloat(read('bgm-t')), at = parseFloat(read('bgm-at'));
+  if (t) audio.currentTime = t + (at ? Math.min(3, (Date.now() - at) / 1000) : 0);
+  if (read('bgm-on')) { audio.preload = 'auto'; play(true); }
 }
 
 function shell(main, { withFooter = true } = {}) {

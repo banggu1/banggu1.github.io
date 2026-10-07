@@ -225,7 +225,7 @@ a.entry:hover .t { color: var(--black); }
 
 /* ---------- 포트폴리오 ---------- */
 .page-title { font-family: var(--impact); font-weight: 800; font-synthesis: none; text-align: center; font-size: 56px; padding: 80px 0 120px; }
-.tiles { display: grid; grid-template-columns: repeat(2, 375px); gap: 100px 89px; justify-content: center; padding-bottom: 200px; }
+.tiles { display: grid; grid-template-columns: repeat(2, 375px); gap: 130px 96px; justify-content: center; padding-bottom: 220px; }
 .tile { position: relative; width: 375px; aspect-ratio: 1; overflow: hidden; }
 .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease, filter .4s; }
 .tile span {
@@ -251,7 +251,7 @@ a.entry:hover .t { color: var(--black); }
 @media (prefers-reduced-motion: reduce) {
   .cat-title::after, .page-title::after { clip-path: none; transition: none; }
 }
-.grid { display: grid; grid-template-columns: repeat(3, 259px); justify-content: space-between; gap: 100px 0; width: min(950px, 100% - 32px); margin: 0 auto; padding-bottom: 200px; }
+.grid { display: grid; grid-template-columns: repeat(3, 259px); justify-content: space-between; gap: 140px 0; width: min(950px, 100% - 32px); margin: 0 auto; padding-bottom: 200px; }
 .card { display: block; text-align: center; }
 .card .thumb { width: 259px; aspect-ratio: 259 / 375; overflow: hidden; background: #f2f2f2; }
 .card .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
@@ -261,7 +261,7 @@ a.entry:hover .t { color: var(--black); }
 .card.nolink:hover .thumb img { transform: none; }
 .coming { text-align: center; font-size: 18px; padding: 40px 0 300px; color: #777; }
 
-.cards2 { display: grid; grid-template-columns: repeat(2, 300px); justify-content: center; gap: 0 160px; padding: 60px 0 260px; }
+.cards2 { display: grid; grid-template-columns: repeat(2, 300px); justify-content: center; gap: 110px 160px; padding: 60px 0 260px; }
 .card2 h3 { font-family: var(--sans); font-weight: 700; font-size: 20px; }
 .card2 .d { font-size: 13px; margin: 4px 0 18px; display: block; }
 .card2 .thumb { box-shadow: 0 2px 8px rgba(0,0,0,.25); overflow: hidden; aspect-ratio: 300 / 420; }
@@ -273,12 +273,12 @@ a.entry:hover .t { color: var(--black); }
 .project .hero { width: 100%; }
 .project video { width: 100%; background: #000; }
 .project .headline { font-family: var(--impact); font-weight: 800; font-synthesis: none; font-size: 24px; text-align: center; margin: 70px 0 60px; line-height: 1.4; }
-.project .h { font-family: var(--impact); font-weight: 800; font-synthesis: none; font-size: 22px; text-align: center; margin: 90px 0 40px; }
-.project .sub { font-family: var(--sans); font-weight: 700; font-size: 16px; margin-top: 30px; line-height: 1.6; }
-.project p { font-family: var(--sans); font-size: 16px; line-height: 1.75; white-space: pre-line; margin-top: 10px; }
+.project .h { font-family: var(--impact); font-weight: 800; font-synthesis: none; font-size: 22px; text-align: center; margin: 120px 0 48px; }
+.project .sub { font-family: var(--sans); font-weight: 700; font-size: 16px; margin-top: 52px; line-height: 1.6; }
+.project p { font-family: var(--sans); font-size: 16px; line-height: 1.85; white-space: pre-line; margin-top: 16px; }
 /* 이미지 위아래로 숨 쉴 여백 */
-.project .img { margin: 48px auto; }
-.project .imgs { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: flex-end; margin: 48px 0 14px; }
+.project .img { margin: 64px auto; }
+.project .imgs { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: flex-end; margin: 64px 0 14px; }
 .project .imgs img { height: 140px; width: auto; }
 .project .cap { text-align: center; font-size: 13px; color: #444; margin-top: 8px; }
 .project .links { margin-top: 40px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
@@ -315,9 +315,9 @@ a.entry:hover .t { color: var(--black); }
   .tile span { opacity: 1; background: rgba(255,255,255,.55); }
   .back { margin-left: 16px; }
   .cat-title { font-size: 44px; padding-bottom: 60px; }
-  .grid { grid-template-columns: repeat(2, 1fr); gap: 50px 16px; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 72px 16px; }
   .card .thumb { width: 100%; }
-  .cards2 { grid-template-columns: min(300px, 100%); gap: 60px; }
+  .cards2 { grid-template-columns: min(300px, 100%); gap: 84px; }
   .page-title { padding: 40px 0 60px; }
 }
 @media (max-width: 480px) {
@@ -367,7 +367,7 @@ a.entry:hover .t { color: var(--black); }
 
 /* ---------- ARCHIVE: 작은 작업 카드 ---------- */
 .archive {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 60px 40px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 110px 56px;
   width: min(980px, 100% - 32px); margin: 0 auto; padding-bottom: 200px;
 }
 .arc-card {
@@ -406,14 +406,14 @@ a.entry:hover .t { color: var(--black); }
 }
 
 /* ---------- INTERACTIVE: 가로 화면(게임·웹) 카드 ---------- */
-.cards2.wide { grid-template-columns: repeat(2, minmax(0, 440px)); gap: 70px 60px; }
+.cards2.wide { grid-template-columns: repeat(2, minmax(0, 440px)); gap: 120px 80px; }
 .cards2.wide .thumb { aspect-ratio: 16 / 10; }
 @media (max-width: 900px) {
-  .cards2.wide { grid-template-columns: min(440px, 100%); gap: 50px; }
+  .cards2.wide { grid-template-columns: min(440px, 100%); gap: 84px; }
 }
 
 /* 본문 중간에 들어가는 슬라이드 (맨 위 슬라이드 말고) */
-.project > .hero-wrap:not(:first-child) { margin: 48px 0 14px; }
+.project > .hero-wrap:not(:first-child) { margin: 64px 0 14px; }
 
 /* BIO 전시 목록의 출품작 링크 줄 */
 .entry .works { display: block; font-size: 13px; color: #555; margin-top: 2px; }
