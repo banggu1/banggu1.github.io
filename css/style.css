@@ -97,7 +97,7 @@ img, video { display: block; max-width: 100%; }
 
 /* 아래쪽에 계속 흘러가는 글자 띠 */
 .intro { overflow-x: hidden; }
-.marquee { width: 100vw; overflow: hidden; margin-top: 44px; border-top: 2px solid #000; border-bottom: 2px solid #000; padding: 10px 0; }
+.marquee { width: 100vw; overflow: hidden; margin-top: 120px; border-top: 2px solid #000; border-bottom: 2px solid #000; padding: 10px 0; }
 .marquee .track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
 .marquee span {
   font-family: var(--impact); font-weight: 800; font-synthesis: none; font-size: clamp(24px, 3.4vw, 44px);
